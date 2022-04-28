@@ -41,6 +41,7 @@ function Login1({ navigation }) {
                   placeholderTextColor={colors.disabledlight}
                   keyboardtype={'numeric'}
                   maxLength={10}
+                  
                 />
               </View>
             </View>

@@ -5,9 +5,11 @@ import styles from './style'
 import Login from '../Login/Login'
 import navigationStrings from '../../navigation/navigationStrings'
 import { useDispatch } from 'react-redux'
+import WrapperContainer from '../../Components/WrapperContainer'
 
 
 const Tutorial = ({ navigation }) => {
+   
     const dispatch = useDispatch()
     const [showSlider, setShowSlider] = useState(true)
     const slides = [{
@@ -30,6 +32,7 @@ const Tutorial = ({ navigation }) => {
     },
     ];
     const renderSlide = ({ item }) => {
+     
         return <View style={styles.slide}>
             <Image style={styles.imageStyle} source={item.image} />
             <Text style={styles.title}>{item.title}</Text>
@@ -51,7 +54,9 @@ const Tutorial = ({ navigation }) => {
         );
     };
     return (
+       
         <ScrollView>
+             <WrapperContainer>
             <View style={styles.tutorialContainer}>
                 <AppIntroSlider
                     data={slides}
@@ -59,11 +64,13 @@ const Tutorial = ({ navigation }) => {
                     renderDoneButton={renderDoneButton}
                     activeDotStyle={styles.activedote}
                     dotStyle={styles.inactivedote} />
-
-
+                    
 
             </View>
+            </WrapperContainer>
         </ScrollView>
+        
+        
 
     )
 }

@@ -1,7 +1,7 @@
 import { StyleSheet, Dimensions } from 'react-native'
 import colors from '../../style/colors';
 const { width, height } = Dimensions.get('window');
-import responsiveSize, { moderateScale, textScale } from '../../style/responsiveSize'
+import responsiveSize, { moderateScale,moderateScaleVertical, textScale } from '../../style/responsiveSize'
 
 
 
@@ -20,6 +20,9 @@ const styles = StyleSheet.create({
         color:colors.greyX,
         lineHeight:moderateScale(32)
     },
+    // inputview:{
+    //     marginTop: moderateScaleVertical(32)
+    // },
     
 })
 export default styles

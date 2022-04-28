@@ -12,6 +12,7 @@ import navigationStrings from '../../navigation/navigationStrings'
 import TextInputComponent from '../../Components/TextInput'
 
 
+
 function SetPassword({navigation}) {
   return (
     <WrapperContainer>

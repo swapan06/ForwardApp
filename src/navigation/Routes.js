@@ -7,11 +7,11 @@ import MainStack from './MainStack';
 
 const Stack = createStackNavigator();
 export default function Route() {
-    const userStatus = useSelector(state => state.userStatus);
+    const userStatus = useSelector(state => state.userStatus.userData);
     return (
         <NavigationContainer>
             <Stack.Navigator>
-                {userStatus ? MainStack(Stack) : AuthStack(Stack)}
+                {false ? MainStack(Stack) : AuthStack(Stack)}
             </Stack.Navigator>
         </NavigationContainer>
     );
