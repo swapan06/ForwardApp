@@ -51,7 +51,7 @@ function SignUp({navigation}) {
         const res = await actions.signUp(apiData)
         console.log("singnup api res_+++++", res)
         alert("User signup successfully....!!!")
-        
+        navigation.navigate(navigationStrings.SIGNUP1)
     } catch (error) {
         console.log("error raised", error)
         alert(error?.message)
