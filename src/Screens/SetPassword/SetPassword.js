@@ -1,5 +1,5 @@
 import React from 'react'
-import { Text, View, SafeAreaView, Image, KeyboardAvoidingView } from 'react-native'
+import { Text, View, SafeAreaView, Image, KeyboardAvoidingView,Platform ,ScrollView} from 'react-native'
 import WrapperContainer from '../../Components/WrapperContainer'
 import { images } from '../../constants/images'
 import strings from '../../constants/lang'
@@ -7,17 +7,20 @@ import styles from './style'
 import Header from '../../Components/Header'
 import ButtonComponent from '../../Components/button'
 import colors from '../../style/colors'
-import { moderateScale, width } from '../../style/responsiveSize'
+import { moderateScale,moderateScaleVertical, width } from '../../style/responsiveSize'
 import navigationStrings from '../../navigation/navigationStrings'
 import TextInputComponent from '../../Components/TextInput'
 
 
-function SetPassword() {
+function SetPassword({navigation}) {
   return (
     <WrapperContainer>
-      <Header />
+      <Header left={true}
+                onPress={() => { navigation.navigate(navigationStrings.SIGNUP1) }} />
+                <ScrollView>
       <Text style={styles.welcomeText}>{strings.SET_PASSWORD}</Text>
       <Text style={styles.continueText}>{strings.UNIQUE_PASSWORD}</Text>
+      <View style={{marginHorizontal:moderateScale(15)}}>
       <View style={{marginVertical:moderateScale(16)}}>
           <TextInputComponent
             viewstyle={styles.inputview}
@@ -38,9 +41,11 @@ function SetPassword() {
             righttext={strings.SHOW}
           />
         </View>
+        </View>
+        </ScrollView>
         
-      <KeyboardAvoidingView enabled={true}>
-        <View>
+      <KeyboardAvoidingView enabled={true} behavior={Platform.OS == 'android'?'height':'padding'}>
+        <View style={{paddingBottom:Platform.OS=== 'ios'?moderateScaleVertical(45):moderateScaleVertical(20)}} >
           <ButtonComponent buttonText={strings.GET_STARTED} textColor={colors.white}  onpress={() => {navigation.navigate(navigationStrings.SETPASSWORD)}} />
         </View>
       </KeyboardAvoidingView>

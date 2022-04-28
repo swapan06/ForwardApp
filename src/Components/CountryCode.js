@@ -29,7 +29,7 @@ function CountryCode() {
         //   marginTop: moderateScaleVertical(2),
           // flex: 0.6,
           // width:moderateScale(width/4.4),
-          marginLeft: moderateScale(20),
+          marginLeft: moderateScale(10),
         }}>
         <CountryPicker
           onSelect={onSelect}
@@ -45,7 +45,7 @@ function CountryCode() {
             height: moderateScale(width / 24),
             width: moderateScale(width / 24),
             resizeMode: 'contain',
-            marginLeft: moderateScaleVertical(5),
+            marginLeft: moderateScaleVertical(15),
           }}
         />
       </View>

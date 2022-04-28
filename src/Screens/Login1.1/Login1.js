@@ -1,5 +1,5 @@
 import React from 'react'
-import { Text, View, SafeAreaView, Image, KeyboardAvoidingView, ScrollView ,TouchableOpacity} from 'react-native'
+import { Text, View, SafeAreaView, Image, KeyboardAvoidingView, ScrollView ,TouchableOpacity,Platform} from 'react-native'
 import WrapperContainer from '../../Components/WrapperContainer'
 import { images } from '../../constants/images'
 import strings from '../../constants/lang'
@@ -9,7 +9,7 @@ import ButtonComponent from '../../Components/button'
 import navigationStrings from '../../navigation/navigationStrings'
 import colors from '../../style/colors'
 import TextInputComponent from '../../Components/TextInput'
-import { moderateScale, textScale } from '../../style/responsiveSize'
+import { moderateScale,moderateScaleVertical, textScale } from '../../style/responsiveSize'
 import CountryCode from '../../Components/CountryCode'
 
 
@@ -17,12 +17,13 @@ function Login1({ navigation }) {
   return (
     <WrapperContainer>
       <ScrollView scrollEnabled={false}>
-        <Header />
+        <Header left={true}
+                onPress={() => { navigation.navigate(navigationStrings.LOGIN) }}/>
         <Text style={styles.welcomeText}>{strings.WELCOME}</Text>
         <Text style={styles.continueText}>{strings.CONTINUE}</Text>
 
         <View >
-          <View>
+          <View style={{marginHorizontal:moderateScale(10)}}>
             <View
               style={{
                 flexDirection: 'row',
@@ -45,7 +46,7 @@ function Login1({ navigation }) {
             </View>
           </View>
         </View>
-        <View>
+        <View style={{marginHorizontal:moderateScale(10)}}>
           <TextInputComponent
             viewstyle={styles.inputview}
             placeholder={strings.PASSWORD}
@@ -65,8 +66,8 @@ function Login1({ navigation }) {
 
         </View>
       </ScrollView>
-      <KeyboardAvoidingView enabled={true}>
-        <View>
+      <KeyboardAvoidingView enabled={true} behavior={Platform.OS == 'android'?'height':'padding'}>
+        <View style={{paddingBottom:Platform.OS=== 'ios'?moderateScaleVertical(45):moderateScaleVertical(20)}}>
           <ButtonComponent buttonText={strings.LOGINS} textColor={colors.white} />
         </View>
       </KeyboardAvoidingView>

@@ -1,5 +1,5 @@
 import React from 'react'
-import { Text, View, SafeAreaView, Image,KeyboardAvoidingView,ScrollView  } from 'react-native'
+import { Text, View, SafeAreaView, Image,KeyboardAvoidingView,ScrollView ,Platform } from 'react-native'
 import WrapperContainer from '../../Components/WrapperContainer'
 import { images } from '../../constants/images'
 import strings from '../../constants/lang'
@@ -7,7 +7,7 @@ import styles from './style'
 import Header from '../../Components/Header'
 import ButtonComponent from '../../Components/button'
 import colors from '../../style/colors'
-import { moderateScale, width } from '../../style/responsiveSize'
+import { moderateScale, moderateScaleVertical,width } from '../../style/responsiveSize'
 import TextInputComponent from '../../Components/TextInput'
 import navigationStrings from '../../navigation/navigationStrings'
 import CountryCode from '../../Components/CountryCode'
@@ -24,7 +24,7 @@ function SignUp({navigation}) {
                 <Text style={styles.welcomeText}>{strings.CREATE_ACCOUNT}</Text>
                 <Text style={styles.continueText}>{strings.CREATE_CONTINUE}</Text>
               </View>
-              <View>
+              <View style={{marginHorizontal:moderateScale(10)}}> 
                 <View style={{flexDirection:"row",justifyContent:"space-between"}}>
                   <View style={{flex:0.5}}>
                   <TextInputComponent
@@ -79,8 +79,8 @@ function SignUp({navigation}) {
             </View>
           </ScrollView>
   
-          <KeyboardAvoidingView enabled={true}>
-            <View>
+          <KeyboardAvoidingView enabled={true} behavior={Platform.OS == 'android'?'height':'padding'}>
+            <View style={{paddingBottom:Platform.OS=== 'ios'?moderateScaleVertical(45):moderateScaleVertical(20)}}>
             <ButtonComponent buttonText={strings.NEXT} textColor={colors.white} onpress={() => {navigation.navigate(navigationStrings.SIGNUP1)}}/>
            
             </View>

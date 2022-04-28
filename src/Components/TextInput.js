@@ -71,9 +71,9 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: '#4C4C4C',
     borderRadius: moderateScale(10),
-    marginLeft: moderateScale(20),
+    marginLeft: moderateScale(10),
     height: moderateScale(50),
-    marginHorizontal:moderateScale(20),
+    // marginHorizontal:moderateScale(20),
     
   },
   inputtext: {

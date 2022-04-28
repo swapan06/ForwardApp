@@ -24,6 +24,9 @@ const styles = StyleSheet.create({
         color:colors.bottomBarGradientA,
         lineHeight:moderateScale(32)
     },
+    otpinput:{
+        padding:moderateScale(30)
+    },
     
 })
 export default styles

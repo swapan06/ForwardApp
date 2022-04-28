@@ -11,6 +11,7 @@ const WrapperContainer = ({
   bgColor = colors.solidgrey,
   statusBarColor = colors.solidgrey,
   barStyle = 'light-content',
+ 
 }) => {
   return (
     <SafeAreaView
