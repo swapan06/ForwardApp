@@ -58,6 +58,20 @@ export function getItem(key) {
   });
 }
 
+export const storeLogin = async (data) => {
+  console.log('utils set login data', data)
+  console.log(data, '------------store>my>data')
+  try {
+      let jsonValue = JSON.stringify(data)
+      await AsyncStorage.setItem('LoginData', jsonValue)
+      console.log(jsonValue, 'store my data')
+      return { jsonValue }
+  } catch (e) {
+      // saving error
+      console.log("error rasied to store data")
+  }
+}
+
 export function removeItem(key) {
   return AsyncStorage.removeItem(key);
 }
@@ -65,6 +79,7 @@ export function removeItem(key) {
 export function clearAsyncStorate(key) {
   return AsyncStorage.clear();
 }
+
 
 export async function getUserData() {
   return new Promise((resolve, reject) => {

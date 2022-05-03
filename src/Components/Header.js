@@ -27,6 +27,7 @@ function Header ({
       <TouchableOpacity onPress={onPress}>
 
         <Image source={images?.arrow} style={styles.imagesize} />
+      
 
       </TouchableOpacity>
     )}

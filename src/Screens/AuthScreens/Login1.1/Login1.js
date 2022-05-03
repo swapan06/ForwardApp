@@ -1,19 +1,51 @@
-import React from 'react'
+import React,{useState} from 'react'
 import { Text, View, SafeAreaView, Image, KeyboardAvoidingView, ScrollView ,TouchableOpacity,Platform} from 'react-native'
-import WrapperContainer from '../../Components/WrapperContainer'
-import { images } from '../../constants/images'
-import strings from '../../constants/lang'
+import WrapperContainer from '../../../Components/WrapperContainer'
+import { images } from '../../../constants/images'
+import strings from '../../../constants/lang'
 import styles from './style'
-import Header from '../../Components/Header'
-import ButtonComponent from '../../Components/button'
-import navigationStrings from '../../navigation/navigationStrings'
-import colors from '../../style/colors'
-import TextInputComponent from '../../Components/TextInput'
-import { moderateScale,moderateScaleVertical, textScale } from '../../style/responsiveSize'
-import CountryCode from '../../Components/CountryCode'
+import Header from '../../../Components/Header'
+import ButtonComponent from '../../../Components/button'
+import navigationStrings from '../../../navigation/navigationStrings'
+import colors from '../../../style/colors'
+import TextInputComponent from '../../../Components/TextInput'
+import { moderateScale,moderateScaleVertical, textScale } from '../../../style/responsiveSize'
+import CountryCode from '../../../Components/CountryCode'
+import axios from 'axios'
+import { useDispatch } from 'react-redux'
+import actions from '../../../redux/actions'
 
 
 function Login1({ navigation }) {
+
+  const [phoneno, phone] = useState('');
+  const [Password, password] = useState('');
+
+  const dispatch = useDispatch()
+      const data = { password,phone }
+
+      const onLogin = async () => {
+
+        let apiData = {
+            phone:phoneno,
+            phone_code: "91",
+            device_token: 'KDKFJDKFDFKDFDF',
+            device_type: Platform.OS == 'ios' ? 'IOS' : 'ANDROID',
+            password: Password,
+            loginType: 'admin',
+
+        }
+        try {
+            const res = await actions.login(apiData)
+            console.log("Login api res_+++++",res)
+            alert("User Login successfully....!!!")
+            navigation.navigate(navigationStrings.HOME)
+        } catch (error) {
+            console.log("error raised", error)
+            alert(error?.message)
+        }
+    }
+  
   return (
     <WrapperContainer>
       <ScrollView scrollEnabled={false}>
@@ -41,6 +73,8 @@ function Login1({ navigation }) {
                   placeholderTextColor={colors.disabledlight}
                   keyboardtype={'numeric'}
                   maxLength={10}
+                  value={null}
+                  onchangetext={(event) => phone(event)}
                   
                 />
               </View>
@@ -55,6 +89,7 @@ function Login1({ navigation }) {
             value={null}
             rightText={true}
             righttext={strings.SHOW}
+            onChangetext={(event) => password(event)}
           />
         </View>
         <View style={{flexDirection:'row', justifyContent:'space-between',marginHorizontal:moderateScale(20),marginVertical:moderateScale(16)}}>
@@ -69,7 +104,7 @@ function Login1({ navigation }) {
       </ScrollView>
       <KeyboardAvoidingView enabled={true} behavior={Platform.OS == 'android'?'height':'padding'}>
         <View style={{paddingBottom:Platform.OS=== 'ios'?moderateScaleVertical(45):moderateScaleVertical(20)}}>
-          <ButtonComponent buttonText={strings.LOGINS} textColor={colors.white} />
+          <ButtonComponent buttonText={strings.LOGINS} textColor={colors.white} onpress={onLogin}/>
         </View>
       </KeyboardAvoidingView>
     </WrapperContainer>

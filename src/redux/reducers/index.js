@@ -1,10 +1,12 @@
 import userStatus from './auth'
 import { combineReducers } from 'redux'
 import types from '../types';
+import appIntro from './appIntro';
 
 const rootReducers = combineReducers(
     {
-        userStatus
+        userStatus,
+        appIntro
     }
 )
 const appReducer = (state, action) => {

@@ -1,7 +1,7 @@
 import { StyleSheet, Dimensions } from 'react-native'
-import colors from '../../style/colors';
+import colors from '../../../style/colors';
 const { width, height } = Dimensions.get('window');
-import responsiveSize, { moderateScale, textScale } from '../../style/responsiveSize'
+import responsiveSize, { moderateScale, textScale } from '../../../style/responsiveSize'
 
 
 
@@ -18,8 +18,10 @@ const styles = StyleSheet.create({
         textAlign:'left',
         marginLeft:moderateScale(20),
         color:colors.greyX,
-        lineHeight:moderateScale(32)
+        lineHeight:moderateScale(32),
+        marginBottom:moderateScale(32)
     },
+  
     
 })
 export default styles

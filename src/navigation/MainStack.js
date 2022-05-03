@@ -1,11 +1,13 @@
 import React from 'react';
+import Bottomnavigation from './Bottomnavigation';
 import HomeStack from './HomeStack';
+import navigationStrings from './navigationStrings';
 
 export default function (Stack) {
     return (
         <>
             <Stack.Screen
-                name='home'
+                name={navigationStrings.HOME}
                 component={HomeStack}
                 options={{ headerShown: false }}
             />

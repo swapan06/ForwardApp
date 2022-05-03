@@ -3,6 +3,7 @@ import { createStackNavigator } from '@react-navigation/stack'
 import React from 'react';
 import { useSelector } from 'react-redux';
 import AuthStack from './AuthStack';
+import HomeStack from './HomeStack';
 import MainStack from './MainStack';
 
 const Stack = createStackNavigator();
@@ -11,7 +12,7 @@ export default function Route() {
     return (
         <NavigationContainer>
             <Stack.Navigator>
-                {false ? MainStack(Stack) : AuthStack(Stack)}
+                {userStatus? MainStack(Stack) : AuthStack(Stack)}
             </Stack.Navigator>
         </NavigationContainer>
     );

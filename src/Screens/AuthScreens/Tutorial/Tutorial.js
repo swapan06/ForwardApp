@@ -2,10 +2,10 @@ import { View, Text, Image, ScrollView, StyleSheet } from 'react-native'
 import React, { useState } from 'react'
 import AppIntroSlider from 'react-native-app-intro-slider'
 import styles from './style'
-import Login from '../Login/Login'
-import navigationStrings from '../../navigation/navigationStrings'
+import Login from '../../AuthScreens/Login/Login'
+import navigationStrings from '../../../navigation/navigationStrings'
 import { useDispatch } from 'react-redux'
-import WrapperContainer from '../../Components/WrapperContainer'
+import WrapperContainer from '../../../Components/WrapperContainer'
 
 
 const Tutorial = ({ navigation }) => {
@@ -14,19 +14,19 @@ const Tutorial = ({ navigation }) => {
     const [showSlider, setShowSlider] = useState(true)
     const slides = [{
         key: '1',
-        image: require('../../assets/images/slide.png'),
+        image: require('../../../assets/images/slide.png'),
         title: 'Hendrerit vulputate sem',
         description: 'Aenean et convallis nulla. Donec in efficitur nisi, et vestibulum quam aenean.'
     },
     {
         key: '2',
-        image: require('../../assets/images/slide.png'),
+        image: require('../../../assets/images/slide.png'),
         title: 'Hendrerit vulputate sem',
         description: 'Aenean et convallis nulla. Donec in efficitur nisi, et vestibulum quam aenean.'
     },
     {
         key: '3',
-        image: require('../../assets/images/slide.png'),
+        image: require('../../../assets/images/slide.png'),
         title: 'Hendrerit vulputate sem',
         description: 'Aenean et convallis nulla. Donec in efficitur nisi, et vestibulum quam aenean.'
     },
