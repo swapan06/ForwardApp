@@ -5,63 +5,91 @@ import colors from '../style/colors';
 import { moderateScale, moderateScaleVertical, textScale, width } from '../style/responsiveSize';
 
 
-
-function Header ({
-  Title = '',
+function Header({
+  // Title = '',
   color = '',
   style,
-  right = false,
-  rightTitle = '',
-  left = false,
+  // right = false,
+  // rightTitle = '',
+  leftText = false,
+  leftImage = false,
+  leftImageStyle = '',
+  leftImageIcon = '',
+  leftTextTitle ='',
+  leftTextStyle = '',
+
+  centerText = false,
+  centerImage = false,
+  centerImageStyle = '',
+  centerImageIcon = '',
+  centerTextStyle = '',
+
+
+  rightText = false,
+  rightImage = false,
+  rightImageStyle = '',
+  rightImageIcon = '',
+  rightTextStyle = '',
+
   onPress = '',
+  ...props
 }) {
   return (
-   
     <View
-    style={{
-      marginHorizontal: moderateScale(10),
-      flexDirection: 'row',
-      justifyContent: 'space-between',
-    }}>
-    {left && (
-      <TouchableOpacity onPress={onPress}>
-
-        <Image source={images?.arrow} style={styles.imagesize} />
-      
-
-      </TouchableOpacity>
-    )}
-    <Text
       style={{
-        fontSize: textScale(20),
-        color: colors.black,
+        marginHorizontal: moderateScale(20),
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        marginVertical:moderateScale(10)
       }}>
-      {Title}
-    </Text>
-    {right && (
-      <TouchableOpacity onPress={onPress}>
-        <Text
-          style={{
-            fontSize: textScale(20),
-            color: colors.black,
-          }}>
-          {rightTitle}
-        </Text>
-      </TouchableOpacity>
-    )}
-  </View>
-);
+      <View style={{ flex: 0.33, flexDirection: 'row' }}>
+        {leftImage && (
+          <TouchableOpacity  {...props} onPress={onPress}>
+            <Image source={leftImageIcon} style={leftImageStyle} />
+          </TouchableOpacity>
+        )}
+        {leftText && (
+          <TouchableOpacity  {...props}>
+            <Text style={leftTextStyle}>{leftTextTitle}</Text>
+          </TouchableOpacity>
+        )}
+      </View>
+      <View style={{ flex: 0.33, flexDirection: 'row' }}>
+        {centerImage && (
+          <Image source={centerImage} style={centerImageStyle} />
+        )}
+        {centerText && (
+          <TouchableOpacity {...props}>
+            <Text style={centerTextStyle}>{centerText}</Text>
+          </TouchableOpacity>
+        )}
+      </View>
+      <View style={{ flex: 0.33, flexDirection: 'row', justifyContent:'flex-end'}}>
+        {rightImage && (
+          <Image source={rightImageIcon} style={rightImageStyle} />
+        )}
+        {rightText && (
+          <TouchableOpacity {...props}>
+            <Text style={rightTextStyle}>{rightTitle}</Text>
+          </TouchableOpacity>
+        )}
+      </View>
+      
+    </View>
+  );
 }
 
 const styles = StyleSheet.create({
-imagesize: {
-  height: moderateScale(width / 20 ,),
-  width: moderateScale(width / 20,),
-  marginVertical: moderateScaleVertical(10),
-  marginLeft: moderateScale(10),
-  resizeMode: 'contain'
-}
+  imagesize: {
+    height: moderateScale(width / 20,),
+    width: moderateScale(width / 20,),
+    marginVertical: moderateScaleVertical(10),
+    marginLeft: moderateScale(20),
+    resizeMode: 'contain',
+  },
+
 })
+
        
 
 

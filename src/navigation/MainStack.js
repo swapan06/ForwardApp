@@ -8,7 +8,7 @@ export default function (Stack) {
         <>
             <Stack.Screen
                 name={navigationStrings.HOME}
-                component={HomeStack}
+                component={Bottomnavigation}
                 options={{ headerShown: false }}
             />
         </>

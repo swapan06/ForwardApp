@@ -49,7 +49,8 @@ function Login1({ navigation }) {
   return (
     <WrapperContainer>
       <ScrollView scrollEnabled={false}>
-        <Header left={true}
+        <Header leftImage={true}
+                leftImageIcon ={images?.arrow}
                 onPress={() => { navigation.navigate(navigationStrings.LOGIN) }}/>
         <Text style={styles.welcomeText}>{strings.WELCOME}</Text>
         <Text style={styles.continueText}>{strings.CONTINUE}</Text>

@@ -56,7 +56,11 @@ export default {
     UNIQUE_PASSWORD:"Create secure and unique password.",
     CONFIRM_PASSWORD:"Confirm Password",
     GET_STARTED:"GET STARTED ",
-
+    LOREM_TEXT:"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam in turpis luctus.",
+    TIME:"1 hr ago ",
+    COMMENTS: "Comments 1,254",
+    LIKES:"Likes 44,686",
+    PROFILE:"Profile",
 
 
 }

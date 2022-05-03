@@ -7,7 +7,7 @@ import Login1 from '../Screens/AuthScreens/Login1.1/Login1';
 import SignUp from '../Screens/AuthScreens/Signup/SignUp';
 import SignUp1 from '../Screens/AuthScreens/Signup1.1/SignUp1';
 import SetPassword from '../Screens/AuthScreens/SetPassword/SetPassword';
-import Home from '../Screens/Home/Home';
+import Home from '../Screens/MainScreens/Home/Home';
  
 
 export default function (Stack) {

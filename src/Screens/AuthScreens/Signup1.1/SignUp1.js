@@ -16,7 +16,8 @@ function SignUp1({ navigation }) {
   return (
     <WrapperContainer>
       <Header 
-      left={true}
+      leftImage={true}
+      leftImageIcon ={images?.arrow}
       onPress={() => { navigation.navigate(navigationStrings.SIGNUP) }}/>
       <ScrollView>
         <View>

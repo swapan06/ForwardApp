@@ -3,11 +3,11 @@ import { NavigationContainer } from '@react-navigation/native';
 import React from 'react';
 import { Image } from 'react-native';
 import { images } from '../constants/images';
-import Home from '../Screens/Home/Home';
-import Post from '../Screens/Post/Post';
-import Profile from '../Screens/Profile/Profile'
-import Notification from '../Screens/Notifications/Notification'
-import Search from '../Screens/Search/Search'
+import Home from '../Screens/MainScreens/Home/Home';
+import Post from '../Screens/MainScreens/Post/Post';
+import Profile from '../Screens/MainScreens/Profile/Profile'
+import Notification from '../Screens/MainScreens/Notifications/Notification'
+import Search from '../Screens/MainScreens/Search/Search'
 import colors from '../style/colors';
 import navigationStrings from './navigationStrings';
 import { moderateScale,moderateScaleVertical,width } from '../style/responsiveSize';

@@ -12,5 +12,9 @@ export const images ={
     profile: require('../assets/images/ic_user.png'),
     location: require('../assets/images/ic_loc.png'),
     homeicon: require('../assets/images/ic_home_icon.png'),
+    userImage: require('../assets/images/userImage.jpeg'),
+    postimage: require('../assets/images/postimage.webp'),
+    dots: require('../assets/images/ic_dots.png'),
+    direction: require('../assets/images/ic_direction.png'),
 
 }

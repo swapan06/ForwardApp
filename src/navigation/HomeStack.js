@@ -5,6 +5,7 @@ import navigationStrings from './navigationStrings';
 import Tutorial from '../Screens/AuthScreens/Tutorial/Tutorial';
 import Login from '../Screens/AuthScreens/Login/Login';
 import Bottomnavigation from './Bottomnavigation';
+import Home from '../Screens/MainScreens/Home/Home';
 
  
 
@@ -13,7 +14,7 @@ function HomeStack() {
     return (
         <>
             <Stack.Navigator>
-                <Stack.Screen name={navigationStrings.HOME} component={Bottomnavigation} options={{ headerShown: false }}  />
+                <Stack.Screen name={navigationStrings.HOME} component={Home} options={{ headerShown: false }}  />
             </Stack.Navigator>
         </>
     )

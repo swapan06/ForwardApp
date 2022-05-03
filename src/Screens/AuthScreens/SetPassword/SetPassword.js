@@ -16,7 +16,8 @@ import TextInputComponent from '../../../Components/TextInput'
 function SetPassword({navigation}) {
   return (
     <WrapperContainer>
-      <Header left={true}
+      <Header leftImage={true}
+                leftImageIcon ={images?.arrow}
                 onPress={() => { navigation.navigate(navigationStrings.SIGNUP1) }} />
                 <ScrollView>
       <Text style={styles.welcomeText}>{strings.SET_PASSWORD}</Text>
