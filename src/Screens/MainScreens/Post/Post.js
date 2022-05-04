@@ -1,10 +1,13 @@
 import React from 'react'
 import {SafeAreaView,Text} from 'react-native'
+import WrapperContainer from '../../../Components/WrapperContainer'
 function Post() {
   return (
-   <SafeAreaView>
-       <Text>Post</Text>
-   </SafeAreaView>
+<WrapperContainer>
+<Text>Post</Text>
+</WrapperContainer>
+     
+  
   )
 }
 

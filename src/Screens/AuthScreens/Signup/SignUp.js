@@ -18,9 +18,7 @@ import { useDispatch } from 'react-redux'
 
 const baseUrl = "http://192.168.100.101:8001/api/signup"
 
-
 function SignUp({navigation}) {
-
 
       const [firstname, first_name] = useState('');
       const [lastname, last_name] = useState('');
@@ -28,10 +26,13 @@ function SignUp({navigation}) {
       const [ShowPassword, showpassword] = useState('');
       const [Email, email] = useState('');
       const [phoneno, phone] = useState('');
+      // const [phoneCode, phonecode] = useState('');
+      // const [CountryCodes, countrycode] = useState('');
+     
 
       const dispatch = useDispatch()
       // actions.Submit(data)
-      const data = { firstname,lastname, password,showpassword,email,phone }
+      const data = { firstname,lastname, password,showpassword,email,phone}
   
   const onSignup = async () => {
 
@@ -40,8 +41,8 @@ function SignUp({navigation}) {
         last_name: lastname,
         email: Email,
         phone: phoneno,
-        phone_code: "91 ",
-        country_code: " IN",
+        phone_code: '91',
+        country_code: 'IN',
         device_token: 'sdfgdfhfjy ',
         device_type: Platform.OS == 'ios' ? 'IOS' : 'ANDROID',
         password: Password,

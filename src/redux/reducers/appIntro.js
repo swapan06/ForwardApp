@@ -11,7 +11,7 @@ const appIntro = (state = initialState, actions) => {
     case types.INTRO: {
       const data = actions.payload;
       console.log("Dataa>>>>>>>>----", data)
-      setItem('intro', data);
+      setItem('introData', data);
       console.log(state,"state>>>>>>>>>>>>>>>")
       return {
         ...state,

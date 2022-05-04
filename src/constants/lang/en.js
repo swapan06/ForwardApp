@@ -61,6 +61,21 @@ export default {
     COMMENTS: "Comments 1,254",
     LIKES:"Likes 44,686",
     PROFILE:"Profile",
+    EDIT_PROFILE:"Edit Profile",
+    CHANGE_PASSWORD:"Change Password",
+    SIGNOUT:"Signout",
+    SAVE:"SAVE",
+    USERNAME:"Russell Gordon",
+    USERNAME_2:"Sara",
+    USERNAME3:"Raphl",
+    USERNAME4:"Syker John ",
+    NOTIFICATION:"Notification",
+    TIME:"20 min ago",
+    SECTOR:"Sector |",
+    ENTER_LOCATION:"Enter location manually",
+    SUGGESTIONS:"Suggestions",
+    SAVE_CHANGES:"SAVE CHANGES",
+
 
 
 }

@@ -2,7 +2,7 @@ import React from 'react';
 import {SafeAreaView, StatusBar, View} from 'react-native';
 import colors from '../style/colors';
 
-import {moderateScale, moderateScaleVertical} from '../styles/responsiveSize';
+import {moderateScale, moderateScaleVertical,height} from '../styles/responsiveSize';
 
 import strings from '../constants/lang';
 
@@ -20,7 +20,7 @@ const WrapperContainer = ({
         backgroundColor: statusBarColor,
       }}>
       <StatusBar backgroundColor={statusBarColor} barStyle={barStyle} />
-      <View style={{backgroundColor: bgColor, flex: 1}}>{children}</View>
+      <View style={{backgroundColor: bgColor, flex: 1, }}>{children}</View>
     </SafeAreaView>
   );
 };

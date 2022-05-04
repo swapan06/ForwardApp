@@ -11,6 +11,7 @@ import navigationStrings from '../../../navigation/navigationStrings'
 import { GoogleSignin, statusCodes } from '@react-native-google-signin/google-signin'
 import actions from '../../../redux/actions'
 import { GetStarted, saveUserData } from '../../../redux/actions/auth'
+import { GraphRequest, GraphRequestManager, LoginManager } from "react-native-fbsdk";
 // import { GoogleSignin, statusCodes } from '@react-native-google-signin/google-signin';
 
 function Login({ navigation }) {
@@ -35,6 +36,53 @@ function Login({ navigation }) {
         }
     };
 
+    const fblogin = (resCallback) => {
+        LoginManager.logOut();
+        return LoginManager.logInWithPermissions(['email', 'public_profile']).then(
+          result => {
+            console.log("fb result==>>>>>>", result);
+            if (result.declinedPermissions && result.declinedPermissions.includes("email")) {
+              resCallback({ message: " Eamil is required" })
+            }
+            if (result.isCancelled) {
+              console.log("error")
+            } else {
+              const infoRequest = new GraphRequest(
+                '/me?fileds=email,name,picture,friend',
+                null,
+                resCallback
+              );
+              new GraphRequestManager().addRequest(infoRequest).start()
+            }
+          },
+          function (error) {
+            console.log("Login fail with error:" + error)
+          }
+        )
+      }
+
+       const onfbLogin = async () => {
+        try {
+          await fblogin(_responseInfoCallBack)
+        } catch (error) {
+          console.log("error raised", error)
+      
+        }
+      }
+     const _responseInfoCallBack = async (error, result) => {
+        if (error) {
+          console.log("error raised", error)
+          return;
+        }
+        else {
+          const data = result
+          console.log("fb data+++++", data)
+          actions.saveUserData(data)
+      
+        }
+      
+      }
+
     return (
         <WrapperContainer>
             {/* ---------------------------Image Logo with text------------------ */}
@@ -51,7 +99,7 @@ function Login({ navigation }) {
                         <ButtonComponent leftIcon={true} icon={images.google} style={{ backgroundColor: "white", }} textColor={colors.black} buttonText={strings.GOOGLE_LOGIN} onpress={googleLogin} />
                     </TouchableOpacity>
                     <TouchableOpacity>
-                        <ButtonComponent leftIcon={true} icon={images.facebook} style={{ backgroundColor: "white", }} textColor={colors.black} buttonText={strings.FACEBOOK_LOGIN} />
+                        <ButtonComponent leftIcon={true} icon={images.facebook} style={{ backgroundColor: "white", }} textColor={colors.black} buttonText={strings.FACEBOOK_LOGIN} onpress={onfbLogin} />
                     </TouchableOpacity>
                     <TouchableOpacity>
                         <ButtonComponent leftIcon={true} icon={images.apple} style={{ backgroundColor: "white", }} textColor={colors.black} buttonText={strings.APPLE_LOGIN} />

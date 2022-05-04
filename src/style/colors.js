@@ -129,6 +129,7 @@ export default {
   disabledlight:'#999999',
   lightred:'#F43738',
   greyX:'#A6A6A6',
+  greyY:'#B5B0B0',
   
   
 };

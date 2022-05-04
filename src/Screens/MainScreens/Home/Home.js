@@ -31,11 +31,6 @@ function Home({ navigation }) {
                             location='Sector 28D, Chandigarh' />
                     )
                 })}
-                {/* <HomeCard
-                    userProfile={images?.userImage}
-                    userName='Lelia Walker'
-                    location='Sector 28D, Chandigarh'
-                    postImage={images?.postimage}/> */}
             </ScrollView>
 
         </WrapperContainer>

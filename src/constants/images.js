@@ -16,5 +16,11 @@ export const images ={
     postimage: require('../assets/images/postimage.webp'),
     dots: require('../assets/images/ic_dots.png'),
     direction: require('../assets/images/ic_direction.png'),
+    key: require('../assets/images/ic_key.png'),
+    logout: require('../assets/images/ic_logout.png'),
+    userprofile: require('../assets/images/ic_usrr_1.png'),
+    post1: require('../assets/images/post.jpeg'),
+    editimage:require('../assets/images/editimage.jpeg'),
+    edit:require('../assets/images/ic_edit.png'),
 
 }

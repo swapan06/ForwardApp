@@ -1,5 +1,4 @@
 import React from 'react';
-import Bottomnavigation from './Bottomnavigation';
 import HomeStack from './HomeStack';
 import navigationStrings from './navigationStrings';
 
@@ -8,9 +7,11 @@ export default function (Stack) {
         <>
             <Stack.Screen
                 name={navigationStrings.HOME}
-                component={Bottomnavigation}
+                component={HomeStack}
                 options={{ headerShown: false }}
             />
+            
+            
         </>
     );
 }

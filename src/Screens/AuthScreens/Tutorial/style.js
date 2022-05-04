@@ -8,6 +8,8 @@ import responsiveSize, { moderateScale ,textScale,moderateScaleVertical} from '.
 const styles = StyleSheet.create({
     tutorialContainer: {
         backgroundColor: colors.solidgrey,
+    
+    
 
     },
     slide: {
@@ -40,7 +42,9 @@ const styles = StyleSheet.create({
     startbtn:{
         fontSize:15,
          color: colors.white,
-          lineHeight: 32
+        //   lineHeight: 32
+        paddingTop:moderateScaleVertical(14),
+        paddingRight:moderateScaleVertical(15)
     },
     activedote:{
         height: moderateScale(4),

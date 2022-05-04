@@ -10,7 +10,10 @@ export default {
     POST:"Post",
     NOTIFICATION:"Notification",
     PROFILE:"Profile",
-
+    SIGNOUT:"Signout",
+    CHANGE_PASSWORD:"ChangePassword",
+    BOTTOM_TAB:'bottomTab',
+    EDIT_PROFILE:"Edit Profile",
     
 
 }

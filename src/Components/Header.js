@@ -42,9 +42,9 @@ function Header({
         justifyContent: 'space-between',
         marginVertical:moderateScale(10)
       }}>
-      <View style={{ flex: 0.33, flexDirection: 'row' }}>
+      <View style={{ flexDirection: 'row' ,justifyContent:'space-between'}}>
         {leftImage && (
-          <TouchableOpacity  {...props} onPress={onPress}>
+          <TouchableOpacity  {...props} onPress={onPress} style={{alignSelf:'center',marginRight: moderateScale(16)}}>
             <Image source={leftImageIcon} style={leftImageStyle} />
           </TouchableOpacity>
         )}

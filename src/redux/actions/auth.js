@@ -37,12 +37,13 @@ export const login = (data) => {
   export const Intro = (data) => {
     console.log("data>>>>>>>>>>>>>>>>>>", data)
     dispatch({
-        type: type.INTRO,
+        type: types.INTRO,
         payload: data,
     })
 };
   export const Logout = () => {
     dispatch({
-        type: types.LOGOUT
+        type: types.LOGOUT,
+       
     })
-}
+};

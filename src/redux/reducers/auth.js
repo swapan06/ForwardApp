@@ -1,7 +1,7 @@
-import { setItem } from "../../utils/utils";
+import { setItem ,removeItem } from "../../utils/utils";
 import types from "../types";
 const initialstate = {
-    userData: {}
+    userData: null
 };
 const userStatus = (state = initialstate, action) => {
     switch (action.type) {
@@ -9,7 +9,7 @@ const userStatus = (state = initialstate, action) => {
             const data = action.payload;
             setItem(data)
             console.log("LoginData", data)
-            return { ...state.userData, userData: data };
+            return { userData: data };
         }
         
         case types.LOGOUT: {
@@ -17,7 +17,7 @@ const userStatus = (state = initialstate, action) => {
               console.log('res', res)
             })
             return {
-              userData: undefined
+              userData: null
             }
           }
         default: return state;
