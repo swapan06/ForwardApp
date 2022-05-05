@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View, Image } from 'react-native';
+import { StyleSheet, Text, View, Image , TouchableOpacity} from 'react-native';
 import React from 'react';
 import {
     height,
@@ -18,6 +18,8 @@ export default function HomeCard({
     name = false,
     userName = '',
     location = '',
+    onPress,
+   
 }) {
     return (
         <View style={styles.viewContainer}>
@@ -36,7 +38,9 @@ export default function HomeCard({
                 </View>
             </View>
             <View>
+                <TouchableOpacity onPress={onPress}>
                 <Image source={postImage} style={styles.postStyle} />
+                </TouchableOpacity>
             </View>
             <View style={{
                 marginHorizontal: moderateScale(16),

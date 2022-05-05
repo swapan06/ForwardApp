@@ -1,4 +1,4 @@
-import { setItem ,removeItem } from "../../utils/utils";
+import { removeItem, saveLogin } from "../../utils/utils";
 import types from "../types";
 const initialstate = {
     userData: null
@@ -7,7 +7,7 @@ const userStatus = (state = initialstate, action) => {
     switch (action.type) {
         case types.LOGIN: {
             const data = action.payload;
-            setItem(data)
+            saveLogin(data)
             console.log("LoginData", data)
             return { userData: data };
         }

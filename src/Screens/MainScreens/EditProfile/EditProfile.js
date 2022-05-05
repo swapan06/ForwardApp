@@ -12,6 +12,8 @@ import colors from '../../../style/colors'
 import ButtonComponent from '../../../Components/button'
 import { useSelector } from 'react-redux'
 import ImagePicker from 'react-native-image-crop-picker'
+// import { API_BASE_URL } from '../../../config/urls'
+// import axios from 'axios'
 
 
 
@@ -34,18 +36,46 @@ function EditProfile({ navigation }) {
         imageType: null,
 
     });
+
+    const { firstName, lastName, email, phone, profileImage } = state;
+    const updateState = data => setState(state => ({ ...state, ...data }));
+
     const onSelectImage = () => {
         ImagePicker.openPicker({
             width: 300,
             height: 400,
             cropping: true
         }).then(image => {
-            console.log(image);
+            console.log(image)
+            updateState({
+                profileImage: image?.sourceURL || image?.path,
+                imageType: image?.mime
+            })
+            // imageUpload(image.path)
         });
     }
+    //     const imageUpload = (imagePath) => {
+    //         const imageData = new FormData()
+    //         imageData.append("image", {
+    //             uri: imagePath,
+    //             name: 'image.png',
+    //             type: 'image/png'
+    //         })
+    //         console.log("form data", imageData)
+    //         axios({
+    //             method: 'post',
+    //             url: API_BASE_URL,
+    //             data:imageData,
+    //         })
+    //             .then(function (response) {
+    //                 console.log("image upload successfully", response)
+    //             }).then((error) => {
+    //                 console.log("error raised", error)
+    //             })
+    // }
 
-    const { firstName, lastName, email, phone, profileImage } = state;
-    const updateState = data => setState(state => ({ ...state, ...data }));
+
+
     return (
         <WrapperContainer>
             <Header leftImage={true}
@@ -56,7 +86,7 @@ function EditProfile({ navigation }) {
                 onPress={() => navigation.goBack()} />
             <ScrollView>
                 <View style={{ justifyContent: 'center', alignItems: 'center', marginVertical: moderateScaleVertical(20) }}>
-                    <Image source={images?.editimage} style={styles.imageprofile} />
+                    <Image source={(profileImage) ? { uri: profileImage } : images.editimage} style={styles.imageprofile} />
                     <TouchableOpacity onPress={onSelectImage}>
                         <Image
                             source={images.edit}

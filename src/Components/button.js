@@ -8,14 +8,14 @@ const ButtonComponent = ({
     buttonText = '',
     rightIcon = false,
     btn = false,
-    onpress, icon,
+    onPress, icon,
     leftIcon = false,
     style = {},
     textColor,
 }) => {
     return (
 
-        <TouchableOpacity onPress={onpress}>
+        <TouchableOpacity onPress={onPress}>
             <View  style={{ ...buttonStyles.buttonView, ...style }} >
                 <View style={{ flex: 0.15, alignItems: 'center', justifyContent: 'center', }}>
                     {leftIcon && (<Image source={icon} style={buttonStyles.image} />)}

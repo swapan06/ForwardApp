@@ -4,7 +4,7 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import AuthStack from './AuthStack';
 import MainStack from './MainStack';
-import IntroSlider from './IntroSlider'
+import IntroSlider from './IntroSlider';
 
 
 const Stack = createStackNavigator();

@@ -75,6 +75,14 @@ export default {
     ENTER_LOCATION:"Enter location manually",
     SUGGESTIONS:"Suggestions",
     SAVE_CHANGES:"SAVE CHANGES",
+    SECTOR55:"Sector 55, Chandigarh",
+    SECTOR22:"Sector 22, Chandigarh",
+    SECTOR48:"Sector 48, Chandigarh",
+    SECTOR26:"Sector 26, Chandigarh",
+    SECTOR40:"Sector 40, Chandigarh",
+    SECTOR67:"Sector 67, Mohali",
+    LOCATIONS:'Sector 28D, Chandigarh',
+    VIEW_MAP:'VIEW MAP',
 
 
 

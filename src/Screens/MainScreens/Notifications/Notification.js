@@ -5,6 +5,8 @@ import { images } from '../../../constants/images'
 import styles from './style'
 import strings from '../../../constants/lang'
 import Header from '../../../Components/Header'
+import { Divider } from 'react-native-elements/dist/divider/Divider'
+import { width } from '../../../style/responsiveSize'
 
 const notificationsData = [
   {
@@ -41,7 +43,9 @@ const notificationItems = ({ item }) => {
           <Text style={styles.detailsText}> added a new post.</Text>
         </View>
         <Text style={styles.timeText}>{strings.TIME}</Text>
+        <Divider ></Divider>
       </View>
+
     </View>
 
   )

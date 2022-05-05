@@ -11,7 +11,6 @@ import colors from '../../../style/colors'
 import TextInputComponent from '../../../Components/TextInput'
 import { moderateScale,moderateScaleVertical, textScale } from '../../../style/responsiveSize'
 import CountryCode from '../../../Components/CountryCode'
-import axios from 'axios'
 import { useDispatch } from 'react-redux'
 import actions from '../../../redux/actions'
 
@@ -105,7 +104,7 @@ function Login1({ navigation }) {
       </ScrollView>
       <KeyboardAvoidingView enabled={true} behavior={Platform.OS == 'android'?'height':'padding'}>
         <View style={{paddingBottom:Platform.OS=== 'ios'?moderateScaleVertical(45):moderateScaleVertical(20)}}>
-          <ButtonComponent buttonText={strings.LOGINS} textColor={colors.white} onpress={onLogin}/>
+          <ButtonComponent buttonText={strings.LOGINS} textColor={colors.white} onPress={onLogin}/>
         </View>
       </KeyboardAvoidingView>
     </WrapperContainer>

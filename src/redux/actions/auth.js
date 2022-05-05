@@ -11,10 +11,11 @@ export const saveUserData = (data) => {
     console.log(data)
     dispatch({
         type: types.LOGIN,
-        payload: data
+        payload: data,
     })
     
 };
+
 export function signUp(data) {
     return apiPost(SIGNUP, data);
 }

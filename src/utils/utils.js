@@ -1,7 +1,65 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import axios from 'axios';
+import types from '../redux/types';
+import store from '../redux/store';
+
+const { dispatch, getState } = store;
+
+export const saveState = async (detailsList) => {
+  try {
+    const initState = JSON.stringify(detailsList);
+    await AsyncStorage.setItem('data_key', initState);
+    console.log('Data is stored in store')
+    return initState
+  } catch (error) {
+    console.log('data is not svaed')
+  }
+}
+
+export const getData = async () => {
+  try {
+    const newData = await AsyncStorage.getItem('data_key');
+    console.log("new Data is uyrhygmh", newData);
+    return newData != null ? JSON.parse(newData) : null
+  } catch (error) {
+    console.log("app screen get data error")
+  }
+}
 
 
+export const saveLogin = async (data) => {
+  try {
+    const initState = JSON.stringify(data);
+    await AsyncStorage.setItem('login_key', initState);
+    console.log('Data is stored in store')
+    return initState
+  } catch (error) {
+    console.log('data is not svaed')
+  }
+}
+
+
+
+export const getLogin = async () => {
+  try {
+    const jsonValue = await AsyncStorage.getItem('login_key')
+    return jsonValue != null ? JSON.parse(jsonValue) : null;
+  } catch (e) {
+    console.log("login_data get error")
+  }
+}
+
+
+export const removeLogin = async () => {
+  try {
+    await AsyncStorage.removeItem('login_key')
+  } catch (error) {
+
+  }
+}
+
+
+// ----------------
 export async function getHeaders() {
   let userData = await AsyncStorage.getItem('userData');
   if (userData) {

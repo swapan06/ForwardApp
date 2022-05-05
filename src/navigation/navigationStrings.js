@@ -14,6 +14,7 @@ export default {
     CHANGE_PASSWORD:"ChangePassword",
     BOTTOM_TAB:'bottomTab',
     EDIT_PROFILE:"Edit Profile",
+    POST_DETAILS:"Post Details",
     
 
 }

@@ -12,6 +12,8 @@ import navigationStrings from '../../../navigation/navigationStrings'
 import TextInputComponent from '../../../Components/TextInput'
 
 
+
+  
 function SignUp1({ navigation }) {
   return (
     <WrapperContainer>
@@ -55,7 +57,7 @@ function SignUp1({ navigation }) {
       </View>
       <KeyboardAvoidingView enabled={true} behavior={Platform.OS == 'android' ? 'height' : 'padding'}>
         <View style={{paddingBottom:Platform.OS=== 'ios'?moderateScaleVertical(45):moderateScaleVertical(20)}}>
-          <ButtonComponent buttonText={strings.VERIFY} textColor={colors.white} onpress={() => { navigation.navigate(navigationStrings.SETPASSWORD) }} />
+          <ButtonComponent buttonText={strings.VERIFY} textColor={colors.white}onPress={() => { navigation.navigate(navigationStrings.SETPASSWORD) }} />
         </View>
       </KeyboardAvoidingView>
     </WrapperContainer>

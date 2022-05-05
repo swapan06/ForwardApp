@@ -6,12 +6,48 @@ import { images } from '../../../constants/images'
 import Bottomnavigation from '../../../navigation/Bottomnavigation'
 import styles from './style'
 import HomeCard from '../../../Components/HomeCard'
+import navigationStrings from '../../../navigation/navigationStrings'
+import { useSelector } from 'react-redux'
+import strings from '../../../constants/lang'
 
-function Home({ navigation }) {
+function Home({ navigation, route }) {
+    const data = useSelector(state => state.userStatus);
+    const User = data?.pass;
+    const user = data?.email;
 
     const [state, setState] = useState({
-        cardData: [{}, {}, {}, {}]
-    })
+        cardData: [
+            {
+                id: '1',
+                userProfile: images.userImage,
+                postImage: images.postimage,
+                userName: strings.USERNAME,
+                LOCATION: strings.LOCATIONS,
+            },
+            {
+                id: '2',
+                userProfile: images.editimage,
+                postImage: images.postimage,
+                userName: strings.USERNAME,
+                LOCATION: strings.LOCATIONS,
+            },
+            {
+                id: '3',
+                userProfile: images.userImage,
+                postImage: images.postimage,
+                userName: strings.USERNAME,
+                LOCATION: strings.LOCATIONS,
+            },
+            {
+                id: '4',
+                userProfile: images.editimage,
+                postImage: images.postimage,
+                userName: strings.USERNAME,
+                LOCATION: strings.LOCATIONS,
+            },
+        ],
+    });
+
     const { cardData } = state
 
     return (
@@ -25,10 +61,13 @@ function Home({ navigation }) {
             <ScrollView>
                 {cardData.map((item, index) => {
                     return (
-                        <HomeCard userProfile={images.userImage}
-                            userName='Lelia Walker'
-                            postImage={images?.postimage}
-                            location='Sector 28D, Chandigarh' />
+                        <View key={index}>
+                            <HomeCard userProfile={item.userProfile}
+                                userName={item.userName}
+                                postImage={item.postImage}
+                                location={item.LOCATION}
+                                onPress={() => { navigation.navigate(navigationStrings.POST_DETAILS), { postDetail: item } }} />
+                        </View>
                     )
                 })}
             </ScrollView>

@@ -6,4 +6,5 @@ export const commonstyles = StyleSheet.create({
     color: colors.white,
     fontSize: textScale(24),
   },
+  
 });

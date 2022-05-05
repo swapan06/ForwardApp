@@ -1,27 +1,21 @@
 import { setItem } from "../../utils/utils";
-import actions from "../actions";
 import types from "../types"
+
 
 const initialState = {
   introData: true
 };
-const appIntro = (state = initialState, actions) => {
+const appIntro = (state = initialState, action) => {
+  console.log(state, '>>>>>>>>>');
+  switch (action.type) {
+    case types.INTRO:
+      const data = action.payload;
+      setItem('introdata', data);
+      console.log('intro>>>>', data);
+      return {...state, introData: data};
 
-  switch (actions.type) {
-    case types.INTRO: {
-      const data = actions.payload;
-      console.log("Dataa>>>>>>>>----", data)
-      setItem('introData', data);
-      console.log(state,"state>>>>>>>>>>>>>>>")
-      return {
-        ...state,
-        introData: data,
-      }
-    }
     default:
       return state;
-  
-
   }
 
 }

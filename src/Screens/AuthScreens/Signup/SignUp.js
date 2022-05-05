@@ -52,7 +52,7 @@ function SignUp({navigation}) {
         const res = await actions.signUp(apiData)
         console.log("singnup api res_+++++", res)
         alert("User signup successfully....!!!")
-        navigation.navigate(navigationStrings.SIGNUP1)
+        navigation.navigate(navigationStrings.SIGNUP1),{ data: res?.data }
     } catch (error) {
         console.log("error raised", error)
         alert(error?.message)
@@ -155,7 +155,7 @@ function SignUp({navigation}) {
   
           <KeyboardAvoidingView enabled={true} behavior={Platform.OS == 'android'?'height':'padding'}>
             <View style={{paddingBottom:Platform.OS=== 'ios'?moderateScaleVertical(45):moderateScaleVertical(20)}}>
-            <ButtonComponent buttonText={strings.NEXT} textColor={colors.white} onpress={onSignup}/>
+            <ButtonComponent buttonText={strings.NEXT} textColor={colors.white} onPress={onSignup}/>
            
             </View>
           </KeyboardAvoidingView>

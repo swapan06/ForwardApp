@@ -93,13 +93,13 @@ function Login({ navigation }) {
                 </View>
                 {/* -------------------------Login with GOOGLE,FACEBOOK , APPLE------------------- */}
                 <View style={{ flex: 0.55 }}>
-                    <ButtonComponent onpress={() => { navigation.navigate(navigationStrings.LOGIN1) }} textColor={colors.white} buttonText={strings.LOGIN_PHONENO} />
+                    <ButtonComponent onPress={() => { navigation.navigate(navigationStrings.LOGIN1) }} textColor={colors.white} buttonText={strings.LOGIN_PHONENO} />
                     <Text style={styles.orText}> {strings.OR}</Text>
                     <TouchableOpacity >
-                        <ButtonComponent leftIcon={true} icon={images.google} style={{ backgroundColor: "white", }} textColor={colors.black} buttonText={strings.GOOGLE_LOGIN} onpress={googleLogin} />
+                        <ButtonComponent leftIcon={true} icon={images.google} style={{ backgroundColor: "white", }} textColor={colors.black} buttonText={strings.GOOGLE_LOGIN} onPress={googleLogin} />
                     </TouchableOpacity>
                     <TouchableOpacity>
-                        <ButtonComponent leftIcon={true} icon={images.facebook} style={{ backgroundColor: "white", }} textColor={colors.black} buttonText={strings.FACEBOOK_LOGIN} onpress={onfbLogin} />
+                        <ButtonComponent leftIcon={true} icon={images.facebook} style={{ backgroundColor: "white", }} textColor={colors.black} buttonText={strings.FACEBOOK_LOGIN} onPress={onfbLogin} />
                     </TouchableOpacity>
                     <TouchableOpacity>
                         <ButtonComponent leftIcon={true} icon={images.apple} style={{ backgroundColor: "white", }} textColor={colors.black} buttonText={strings.APPLE_LOGIN} />
