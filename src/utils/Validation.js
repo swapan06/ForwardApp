@@ -18,21 +18,21 @@ const checkMinLength = (val, minLength, key) => {
 export default function (data) {
   let error = "";
   const {
-    first_Name,
+    firstName,
     email,
-    last_Name,
+    lastName,
     password,
-    phoneNumber,
+    phone,
     confirmPassword,
   } = data;
 
-  if (first_Name !== undefined) {
-    let emptyValidationText = checkEmpty(first_Name, "name");
+  if (firstName !== undefined) {
+    let emptyValidationText = checkEmpty(firstName, "name");
 
     if (emptyValidationText !== "") {
       return emptyValidationText;
     } else {
-      let minLengthValidation = checkMinLength(first_Name, 3, "name");
+      let minLengthValidation = checkMinLength(firstName, 3, "name");
 
       if (minLengthValidation !== "") {
         return minLengthValidation;
@@ -40,12 +40,12 @@ export default function (data) {
     }
   }
 
-  if (last_Name !== undefined) {
-   let emptyValidationText = checkEmpty(last_Name, 'last name');
+  if (lastName !== undefined) {
+   let emptyValidationText = checkEmpty(lastName, 'last name');
    if (emptyValidationText !== '') {
      return emptyValidationText;
    } else {
-     let minLengthValidation = checkMinLength(last_Name, 3, 'Last name');
+     let minLengthValidation = checkMinLength(lastName, 3, 'Last name');
      if (minLengthValidation !== '') {
        return minLengthValidation;
      }
@@ -64,12 +64,12 @@ export default function (data) {
   }
 
 
-  if (phoneNumber !== undefined) {
-   let emptyValidationText = checkEmpty(phoneNumber, 'phone number');
+  if (phone !== undefined) {
+   let emptyValidationText = checkEmpty(phone, 'phone number');
    if (emptyValidationText !== '') {
      return emptyValidationText;
    }
-   if (!/^[0][1-9]$|^[1-9]\d{8,14}$/.test(phoneNumber)) {
+   if (!/^[0][1-9]$|^[1-9]\d{8,14}$/.test(phone)) {
      return 'Please enter valid mobile number';
    }
   }

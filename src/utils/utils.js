@@ -1,6 +1,5 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import axios from 'axios';
-import types from '../redux/types';
 import store from '../redux/store';
 
 const { dispatch, getState } = store;
@@ -62,7 +61,7 @@ export const removeLogin = async () => {
 // ----------------
 export async function getHeaders() {
   let userData = await AsyncStorage.getItem('userData');
-  console.log("user data header",userData)
+  // console.log("user data header",userData)
   if (userData) {
     userData = JSON.parse(userData);
     return {

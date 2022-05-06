@@ -15,7 +15,7 @@ function Profile({navigation}) {
   const Logout = async () => {
     try {
       await GoogleSignin.signOut();
-      actions.Logout();
+      actions.logout();
       navigation.navigate(navigationStrings.LOGIN)
     } catch (error) {
       console.error(error);

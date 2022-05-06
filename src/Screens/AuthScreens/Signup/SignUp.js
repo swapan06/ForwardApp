@@ -13,32 +13,47 @@ import navigationStrings from '../../../navigation/navigationStrings'
 import CountryCode from '../../../Components/CountryCode'
 import actions from '../../../redux/actions'
 import { commonstyles } from '../../../style/commonStyles'
-import { useSelector } from 'react-redux'
+import validator from '../../../utils/Validation'
+import { showError } from '../../../utils/helperFunctions'
 
 
 function SignUp({ navigation }) {
+  const [signUpData, setSignupData] = useState({
+    firstName: '',
+    lastName: '',
+    email: '',
+    phone: '',
+    phoneCode: '+91',
+    countryCode: 'IN',
+    deviceToken: '132456',
+    deviceType: Platform.OS == 'ios' ? 'IOS' : 'ANDROID',
+    password: ''
+  })
 
+  const { firstName, lastName, email, phone, phoneCode, countryCode, deviceToken, deviceType, password } = signUpData;
+  const updateState = data => setSignupData(state => ({ ...signUpData, ...data }));
 
-
-  const [firstname, setFirstName] = useState('');
-  const [lastname, setLastName] = useState('');
-  const [password, setPassword] = useState('');
-  const [confirmpassword, setConfirmPassword] = useState('');
-  const [email, setEmail] = useState('');
-  const [phoneno, setPhone] = useState('');
-
-  const data = { setFirstName, setLastName, setPassword, setEmail, setPhone, setConfirmPassword }
-
+  const isValidData = () => {
+    const error = validator({ firstName, lastName, email, phone, password });
+    if (error) {
+      showError(error)
+      return;
+    }
+    return true;
+  };
   const onSignup = async () => {
-
+    const checkValid = isValidData();
+    if (!checkValid) {
+      return;
+    }
     let apiData = {
-      first_name: firstname,
-      last_name: lastname,
+      first_name: firstName,
+      last_name: lastName,
       email: email,
-      phone: phoneno,
-      phone_code: '91',
-      country_code: 'IN',
-      device_token: 'sdfgdfhfjy ',
+      phone: phone,
+      phone_code: phoneCode,
+      country_code: countryCode,
+      device_token: deviceToken,
       device_type: Platform.OS == 'ios' ? 'IOS' : 'ANDROID',
       password: password,
 
@@ -50,7 +65,7 @@ function SignUp({ navigation }) {
       const res = await actions.signUp(apiData)
       console.log("singnup api res_+++++", res)
       alert("User signup successfully....!!!")
-      navigation.navigate(navigationStrings.SIGNUP1)
+      navigation.navigate(navigationStrings.SIGNUP1, { data: res?.data })
     } catch (error) {
       console.log("error raised", error)
       alert(error?.message)
@@ -76,8 +91,8 @@ function SignUp({ navigation }) {
                   viewstyle={styles.inputview}
                   placeholder={strings.FIRST_NAME}
                   placeholderTextColor={colors.disabledlight}
-                  value={null}
-                  onchangetext={(event) => setFirstName(event)}
+                  value={firstName}
+                  onchangetext={event => updateState({ firstName: event })}
                 />
               </View>
               <View style={{ flex: 0.5 }}>
@@ -87,7 +102,7 @@ function SignUp({ navigation }) {
                   placeholder={strings.LAST_NAME}
                   placeholderTextColor={colors.disabledlight}
                   value={null}
-                  onchangetext={(event) => setLastName(event)}
+                  onchangetext={event => updateState({ lastName: event })}
                 />
               </View>
 
@@ -98,7 +113,7 @@ function SignUp({ navigation }) {
                 placeholder={strings.EMAIL}
                 placeholderTextColor={colors.disabledlight}
                 value={null}
-                onchangetext={(event) => setEmail(event)}
+                onchangetext={event => updateState({ email: event })}
               />
             </View>
             <View
@@ -118,7 +133,7 @@ function SignUp({ navigation }) {
                   keyboardtype={'numeric'}
                   maxLength={10}
                   value={null}
-                  onchangetext={(event) => setPhone(event)}
+                  onchangetext={event => updateState({ phone: event })}
                 />
               </View>
 
@@ -131,7 +146,7 @@ function SignUp({ navigation }) {
                 value={null}
                 rightText={true}
                 righttext={strings.SHOW}
-                onchangetext={(event) => setPassword(event)}
+                onchangetext={event => updateState({ password: event })}
               />
             </View>
             <View >
@@ -142,7 +157,7 @@ function SignUp({ navigation }) {
                 value={null}
                 rightText={true}
                 righttext={strings.SHOW}
-                onchangetext={(event) => setPassword(event)}
+                onchangetext={event => updateState({ password: event })}
               />
             </View>
           </View>

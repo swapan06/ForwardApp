@@ -19,9 +19,9 @@ export const saveUserData = (data) => {
 export function signUp(data) {
     return apiPost(SIGNUP, data);
 }
-export function changePassword(data) {
-    return apiPost(CHANGE_PASSWORD, data);
-}
+
+
+
 export const login = (data) => {
     console.log(data, 'the given data')
     return new Promise((resolve, reject) => {
@@ -51,16 +51,21 @@ export const editProfile = (data) => {
     });
   };
 
+  export function changePassword(data) {
+    return apiPost(CHANGE_PASSWORD, data);
+}
+
+export const logout = () => {
+    dispatch({
+        type: types.LOGOUT,
+
+    })
+};
+
 export const Intro = (data) => {
     console.log("data----------", data)
     dispatch({
         type: types.INTRO,
         payload: data,
-    })
-};
-export const Logout = () => {
-    dispatch({
-        type: types.LOGOUT,
-
     })
 };
