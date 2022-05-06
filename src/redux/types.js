@@ -6,6 +6,7 @@ export default {
     NO_INTERNET:"NO_INTERNET",
     INTRO:"INTRO",
     CHANGE_PASSWORD:"CHANGE_PASSWORD",
+    EDIT_PROFILE:"EDIT_PROFILE",
 };
   
    

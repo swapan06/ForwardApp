@@ -1,7 +1,7 @@
 import types from "../types"
 import store from "../store"
 import { apiPost } from "../../utils/utils";
-import { CHANGE_PASSWORD, SIGNUP } from "../../config/urls";
+import { CHANGE_PASSWORD, EDIT_PROFILE, SIGNUP } from "../../config/urls";
 import { LOGIN } from "../../config/urls";
 import { setUserData } from "../../utils/utils";
 
@@ -35,6 +35,21 @@ export const login = (data) => {
         });
     });
 };
+
+
+export const editProfile = (data) => {
+    console.log(data, 'the given data for profile update');
+    return new Promise((resolve, reject) => {
+      apiPost(EDIT_PROFILE, data)
+        .then((res) => {
+          saveUserData(res.data);
+          resolve(res);
+        })
+        .catch(error => {
+          reject(error);
+        });
+    });
+  };
 
 export const Intro = (data) => {
     console.log("data----------", data)

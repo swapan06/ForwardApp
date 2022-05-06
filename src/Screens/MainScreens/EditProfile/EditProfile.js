@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import {  View, Image, TouchableOpacity, ScrollView, Platform, KeyboardAvoidingView } from 'react-native'
+import { View, Image, TouchableOpacity, ScrollView, Platform, KeyboardAvoidingView, ActionSheetIOS } from 'react-native'
 import Header from '../../../Components/Header'
 import WrapperContainer from '../../../Components/WrapperContainer'
 import { images } from '../../../constants/images'
@@ -7,11 +7,14 @@ import strings from '../../../constants/lang'
 import styles from './style'
 import TextInputComponent from '../../../Components/TextInput'
 import CountryCode from '../../../Components/CountryCode'
-import {  moderateScale, moderateScaleVertical, width } from '../../../style/responsiveSize'
+import { moderateScale, moderateScaleVertical, width } from '../../../style/responsiveSize'
 import colors from '../../../style/colors'
 import ButtonComponent from '../../../Components/button'
 import { useSelector } from 'react-redux'
 import ImagePicker from 'react-native-image-crop-picker'
+import actions from '../../../redux/actions'
+
+
 
 
 
@@ -38,8 +41,31 @@ function EditProfile({ navigation }) {
     const { firstName, lastName, email, phone, profileImage } = state;
     const updateState = data => setState(state => ({ ...state, ...data }));
 
+    const onEditProfile = async () => {
+        let apiData = {
+            first_name: firstName,
+            last_name: lastName,
+            email: email,
+            phone: phone,
+        }
+        console.log("Editprofile api  data : ", apiData)
 
-    
+        actions.editProfile(apiData)
+            .then(res => {
+                console.log("Edit api res_+++++", res)
+                alert("Updated Profile successfully....!!!")
+                navigation.goBack();
+            })
+            .catch(err => {
+                console.log(err, 'err');
+                alert(err?.message);
+            });
+
+
+    }
+
+
+
     const onSelectImage = () => {
         ImagePicker.openPicker({
             width: 300,
@@ -139,7 +165,7 @@ function EditProfile({ navigation }) {
             </ScrollView>
             <KeyboardAvoidingView enabled={true} behavior={Platform.OS == 'android' ? 'height' : 'padding'}>
                 <View style={{ paddingBottom: Platform.OS === 'ios' ? moderateScaleVertical(45) : moderateScaleVertical(20) }} >
-                    <ButtonComponent buttonText={strings.SAVE_CHANGES} textColor={colors.white} />
+                    <ButtonComponent buttonText={strings.SAVE_CHANGES} textColor={colors.white} onPress={onEditProfile} />
                 </View>
             </KeyboardAvoidingView>
         </WrapperContainer>
