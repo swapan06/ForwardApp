@@ -12,9 +12,9 @@ const TextInputComponent = ({
   placeholderTextColor = '',
   leftIcon = false,
   rightIcon = false,
-  onchangetext = '',
+  onchangetext= () =>{},
   keyboardtype,
-  value = '',
+  value='',
   viewstyle,
   rightText=false,
   righttext='',
@@ -29,7 +29,7 @@ const TextInputComponent = ({
         </View>
       )}
 
-      <View style={{flex: 1, marginLeft: moderateScale(5)}}>
+      <View style={{flex: 1, marginLeft: moderateScale(16)}}>
         <TextInput
           {...props}
           placeholder={placeholder}
@@ -39,7 +39,7 @@ const TextInputComponent = ({
           value={value}
           onChangeText={onchangetext}
           keyboardAppearance={'dark'}
-          keybo
+      
         />
       </View>
       {rightText && (

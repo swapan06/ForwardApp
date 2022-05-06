@@ -23,5 +23,6 @@ export const images ={
     editimage:require('../assets/images/editimage.jpeg'),
     edit:require('../assets/images/ic_edit.png'),
     cross:require('../assets/images/ic_crss.png'),
+    slider:require('../assets/images/slide.png'),
 
 }

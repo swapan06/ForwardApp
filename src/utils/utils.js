@@ -62,10 +62,11 @@ export const removeLogin = async () => {
 // ----------------
 export async function getHeaders() {
   let userData = await AsyncStorage.getItem('userData');
+  console.log("user data header",userData)
   if (userData) {
     userData = JSON.parse(userData);
     return {
-      authorization: `${userData.auth_token}`,
+      authorization: `Bearer ${userData.access_token}`,
     };
   }
   return {};

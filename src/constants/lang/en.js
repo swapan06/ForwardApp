@@ -83,6 +83,9 @@ export default {
     SECTOR67:"Sector 67, Mohali",
     LOCATIONS:'Sector 28D, Chandigarh',
     VIEW_MAP:'VIEW MAP',
+    TITLE:'Hendrerit vulputate sem',
+    DESCRIPTION:'Aenean et convallis nulla. Donec in efficitur nisi, et vestibulum quam aenean.',
+    CURRENT_PASSWORD:'Current Password',
 
 
 

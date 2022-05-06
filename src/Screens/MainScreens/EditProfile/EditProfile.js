@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Text, View, Image, TouchableOpacity, ScrollView, Platform, KeyboardAvoidingView } from 'react-native'
+import {  View, Image, TouchableOpacity, ScrollView, Platform, KeyboardAvoidingView } from 'react-native'
 import Header from '../../../Components/Header'
 import WrapperContainer from '../../../Components/WrapperContainer'
 import { images } from '../../../constants/images'
@@ -7,13 +7,11 @@ import strings from '../../../constants/lang'
 import styles from './style'
 import TextInputComponent from '../../../Components/TextInput'
 import CountryCode from '../../../Components/CountryCode'
-import { height, moderateScale, moderateScaleVertical, textScale, width } from '../../../style/responsiveSize'
+import {  moderateScale, moderateScaleVertical, width } from '../../../style/responsiveSize'
 import colors from '../../../style/colors'
 import ButtonComponent from '../../../Components/button'
 import { useSelector } from 'react-redux'
 import ImagePicker from 'react-native-image-crop-picker'
-// import { API_BASE_URL } from '../../../config/urls'
-// import axios from 'axios'
 
 
 
@@ -40,6 +38,8 @@ function EditProfile({ navigation }) {
     const { firstName, lastName, email, phone, profileImage } = state;
     const updateState = data => setState(state => ({ ...state, ...data }));
 
+
+    
     const onSelectImage = () => {
         ImagePicker.openPicker({
             width: 300,
@@ -51,29 +51,8 @@ function EditProfile({ navigation }) {
                 profileImage: image?.sourceURL || image?.path,
                 imageType: image?.mime
             })
-            // imageUpload(image.path)
         });
     }
-    //     const imageUpload = (imagePath) => {
-    //         const imageData = new FormData()
-    //         imageData.append("image", {
-    //             uri: imagePath,
-    //             name: 'image.png',
-    //             type: 'image/png'
-    //         })
-    //         console.log("form data", imageData)
-    //         axios({
-    //             method: 'post',
-    //             url: API_BASE_URL,
-    //             data:imageData,
-    //         })
-    //             .then(function (response) {
-    //                 console.log("image upload successfully", response)
-    //             }).then((error) => {
-    //                 console.log("error raised", error)
-    //             })
-    // }
-
 
 
     return (

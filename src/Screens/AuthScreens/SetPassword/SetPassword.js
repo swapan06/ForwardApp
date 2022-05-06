@@ -10,6 +10,7 @@ import colors from '../../../style/colors'
 import { moderateScale,moderateScaleVertical, width } from '../../../style/responsiveSize'
 import navigationStrings from '../../../navigation/navigationStrings'
 import TextInputComponent from '../../../Components/TextInput'
+import { commonstyles } from '../../../style/commonStyles'
 
 
 

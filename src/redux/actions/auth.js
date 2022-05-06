@@ -1,7 +1,7 @@
 import types from "../types"
 import store from "../store"
 import { apiPost } from "../../utils/utils";
-import { SIGNUP } from "../../config/urls";
+import { CHANGE_PASSWORD, SIGNUP } from "../../config/urls";
 import { LOGIN } from "../../config/urls";
 import { setUserData } from "../../utils/utils";
 
@@ -13,38 +13,39 @@ export const saveUserData = (data) => {
         type: types.LOGIN,
         payload: data,
     })
-    
+
 };
 
 export function signUp(data) {
     return apiPost(SIGNUP, data);
 }
+export function changePassword(data) {
+    return apiPost(CHANGE_PASSWORD, data);
+}
 export const login = (data) => {
     console.log(data, 'the given data')
     return new Promise((resolve, reject) => {
-      apiPost(LOGIN, data)
-        .then((res) => {
+        apiPost(LOGIN, data).then((res) => {
             setUserData(res.data).then(suc => {
-                    saveUserData(res.data);
-                    resolve(res);
-                })
-                .catch((error) => {
-                  reject(error);
+                saveUserData(res.data);
+                resolve(res);
+            }).catch((error) => {
+                reject(error);
             })
-       
         });
     });
-  };
-  export const Intro = (data) => {
-    console.log("data>>>>>>>>>>>>>>>>>>", data)
+};
+
+export const Intro = (data) => {
+    console.log("data----------", data)
     dispatch({
         type: types.INTRO,
         payload: data,
     })
 };
-  export const Logout = () => {
+export const Logout = () => {
     dispatch({
         type: types.LOGOUT,
-       
+
     })
 };

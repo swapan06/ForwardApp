@@ -1,78 +1,81 @@
-import { View, Text, Image, ScrollView, StyleSheet } from 'react-native'
-import React, { useState } from 'react'
+import { View, Text, Image, ScrollView, TouchableOpacity } from 'react-native'
+import React from 'react'
 import AppIntroSlider from 'react-native-app-intro-slider'
 import styles from './style'
-import Login from '../../AuthScreens/Login/Login'
 import navigationStrings from '../../../navigation/navigationStrings'
-import { useDispatch } from 'react-redux'
 import WrapperContainer from '../../../Components/WrapperContainer'
+import strings from '../../../constants/lang'
+import { images } from '../../../constants/images'
 
+
+
+const slides = [{
+    key: '1',
+    image: images?.slider,
+    title: strings.TITLE,
+    description: strings.DESCRIPTION
+},
+{
+    key: '2',
+    image: images?.slider,
+    title: strings.TITLE,
+    description: strings.DESCRIPTION
+},
+{
+    key: '3',
+    image: images?.slider,
+    title: strings.TITLE,
+    description: strings.DESCRIPTION,
+},
+];
 
 const Tutorial = ({ navigation }) => {
-   
-    const dispatch = useDispatch()
-    const [showSlider, setShowSlider] = useState(true)
-    const slides = [{
-        key: '1',
-        image: require('../../../assets/images/slide.png'),
-        title: 'Hendrerit vulputate sem',
-        description: 'Aenean et convallis nulla. Donec in efficitur nisi, et vestibulum quam aenean.'
-    },
-    {
-        key: '2',
-        image: require('../../../assets/images/slide.png'),
-        title: 'Hendrerit vulputate sem',
-        description: 'Aenean et convallis nulla. Donec in efficitur nisi, et vestibulum quam aenean.'
-    },
-    {
-        key: '3',
-        image: require('../../../assets/images/slide.png'),
-        title: 'Hendrerit vulputate sem',
-        description: 'Aenean et convallis nulla. Donec in efficitur nisi, et vestibulum quam aenean.'
-    },
-    ];
+    // const data = () => {
+    //     actions.Intro(false);
+    // };
+
+
     const renderSlide = ({ item }) => {
-     
-        return <View style={styles.slide}>
-            <Image style={styles.imageStyle} source={item.image} />
-            <Text style={styles.title}>{item.title}</Text>
-            <Text style={styles.description}>{item.description}</Text>
-        </View>
+        return (
+            <View style={styles.slide}>
+                <Image style={styles.imageStyle} source={item.image} />
+                <Text style={styles.title}>{item.title}</Text>
+                <Text style={styles.description}>{item.description}</Text>
+            </View>
+        )
     };
     const renderNextButton = () => {
         return (
-          <View>
-            <Text style={styles.intobutton}>NEXT</Text>
-          </View>
+            <View>
+                <Text style={styles.intobutton}>NEXT</Text>
+            </View>
         );
-      };
+    };
     const renderDoneButton = () => {
         return (
             <View>
-                <Text onPress={() => { navigation.navigate(navigationStrings.LOGIN) }} style={styles.startbtn}>GET STARTED</Text>
+                <TouchableOpacity onPress={() => { navigation.navigate(navigationStrings.LOGIN) }}>
+                    <Text style={styles.startbtn}>GET STARTED</Text>
+                </TouchableOpacity>
+
             </View>
         );
     };
     return (
-       
-        <ScrollView>
-             <WrapperContainer>
-            <View style={styles.tutorialContainer}>
-                <AppIntroSlider
-                    data={slides}
-                    renderItem={renderSlide}
-                    renderDoneButton={renderDoneButton}
-                    activeDotStyle={styles.activedote}
-                    dotStyle={styles.inactivedote} />
-                    
 
-            </View>
+        <ScrollView>
+            <WrapperContainer>
+                <View style={styles.tutorialContainer}>
+                    <AppIntroSlider
+                        data={slides}
+                        renderItem={renderSlide}
+                        renderDoneButton={renderDoneButton}
+                        activeDotStyle={styles.activedote}
+                        dotStyle={styles.inactivedote} />
+                </View>
             </WrapperContainer>
         </ScrollView>
-        
-        
 
     )
 }
-
-export default Tutorial
+export default Tutorial;

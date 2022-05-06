@@ -4,6 +4,8 @@ import { Provider } from 'react-redux';
 import Route from './src/navigation/Routes';
 import store from './src/redux/store';
 import { getItem } from './src/utils/utils';
+import actions from './src/redux/actions';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 
 

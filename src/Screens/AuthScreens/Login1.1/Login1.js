@@ -1,5 +1,5 @@
-import React,{useState} from 'react'
-import { Text, View, SafeAreaView, Image, KeyboardAvoidingView, ScrollView ,TouchableOpacity,Platform} from 'react-native'
+import React, { useState } from 'react'
+import { Text, View, KeyboardAvoidingView, ScrollView, TouchableOpacity, Platform } from 'react-native'
 import WrapperContainer from '../../../Components/WrapperContainer'
 import { images } from '../../../constants/images'
 import strings from '../../../constants/lang'
@@ -9,53 +9,56 @@ import ButtonComponent from '../../../Components/button'
 import navigationStrings from '../../../navigation/navigationStrings'
 import colors from '../../../style/colors'
 import TextInputComponent from '../../../Components/TextInput'
-import { moderateScale,moderateScaleVertical, textScale } from '../../../style/responsiveSize'
+import { moderateScale, moderateScaleVertical, textScale } from '../../../style/responsiveSize'
 import CountryCode from '../../../Components/CountryCode'
-import { useDispatch } from 'react-redux'
 import actions from '../../../redux/actions'
+import { useSelector } from 'react-redux'
 
 
 function Login1({ navigation }) {
-
-  const [phoneno, phone] = useState('');
-  const [Password, password] = useState('');
-
-  const dispatch = useDispatch()
-      const data = { password,phone }
-
-      const onLogin = async () => {
-
-        let apiData = {
-            phone:phoneno,
-            phone_code: "91",
-            device_token: 'KDKFJDKFDFKDFDF',
-            device_type: Platform.OS == 'ios' ? 'IOS' : 'ANDROID',
-            password: Password,
-            loginType: 'admin',
-
-        }
-        try {
-            const res = await actions.login(apiData)
-            console.log("Login api res_+++++",res)
-            alert("User Login successfully....!!!")
-            navigation.navigate(navigationStrings.HOME)
-        } catch (error) {
-            console.log("error raised", error)
-            alert(error?.message)
-        }
-    }
+  const userData = useSelector(state=> state)
+  console.log("user data+++",userData)
   
+  const [phoneno, setPhone] = useState('');
+  const [Password, setPassword] = useState('');
+
+
+// ------------------Login api---------------------//
+  const onLogin = async () => {
+
+    let apiData = {
+      phone: phoneno,
+      phone_code: "91",
+      device_token: 'KDKFJDKFDFKDFDF',
+      device_type: Platform.OS == 'ios' ? 'IOS' : 'ANDROID',
+      password: Password,
+      loginType: 'admin',
+    }
+    console.log("sending login data",apiData)
+
+    try {
+      const res = await actions.login(apiData)
+      console.log("Login api res_+++++", res)
+      alert("User Login successfully....!!!")
+      navigation.navigate(navigationStrings.HOME)
+    } catch (error) {
+      console.log("error raised", error)
+      alert(error?.message)
+    }
+  }
+
   return (
     <WrapperContainer>
       <ScrollView scrollEnabled={false}>
         <Header leftImage={true}
-                leftImageIcon ={images?.arrow}
-                onPress={() => { navigation.navigate(navigationStrings.LOGIN) }}/>
+          leftImageIcon={images?.arrow}
+          onPress={() => { navigation.navigate(navigationStrings.LOGIN) }} />
         <Text style={styles.welcomeText}>{strings.WELCOME}</Text>
         <Text style={styles.continueText}>{strings.CONTINUE}</Text>
 
         <View >
-          <View style={{marginHorizontal:moderateScale(10)}}>
+          {/* ------------------TextInputcomponent fields---------- */}
+          <View style={{ marginHorizontal: moderateScale(10) }}>
             <View
               style={{
                 flexDirection: 'row',
@@ -74,14 +77,12 @@ function Login1({ navigation }) {
                   keyboardtype={'numeric'}
                   maxLength={10}
                   value={null}
-                  onchangetext={(event) => phone(event)}
-                  
-                />
+                  onchangetext={(event) => setPhone(event)} />
               </View>
             </View>
           </View>
         </View>
-        <View style={{marginHorizontal:moderateScale(10)}}>
+        <View style={{ marginHorizontal: moderateScale(10) }}>
           <TextInputComponent
             viewstyle={styles.inputview}
             placeholder={strings.PASSWORD}
@@ -89,22 +90,21 @@ function Login1({ navigation }) {
             value={null}
             rightText={true}
             righttext={strings.SHOW}
-            onChangetext={(event) => password(event)}
-          />
+            onchangetext={(event) => setPassword(event)} />
         </View>
-        <View style={{flexDirection:'row', justifyContent:'space-between',marginHorizontal:moderateScale(20),marginVertical:moderateScale(16)}}>
+        <View style={{ flexDirection: 'row', justifyContent: 'space-between', marginHorizontal: moderateScale(20), marginVertical: moderateScale(16) }}>
           <TouchableOpacity>
-            <Text style={{fontSize:textScale(13),color:colors.white,}}>{strings.OTP}</Text>
+            <Text style={{ fontSize: textScale(13), color: colors.white, }}>{strings.OTP}</Text>
           </TouchableOpacity>
           <TouchableOpacity>
-            <Text style={{fontSize:textScale(13),color:colors.bottomBarGradientA,}} >{strings.FORGOT_PASSWORD}</Text>
+            <Text style={{ fontSize: textScale(13), color: colors.bottomBarGradientA, }} >{strings.FORGOT_PASSWORD}</Text>
           </TouchableOpacity>
-
         </View>
       </ScrollView>
-      <KeyboardAvoidingView enabled={true} behavior={Platform.OS == 'android'?'height':'padding'}>
-        <View style={{paddingBottom:Platform.OS=== 'ios'?moderateScaleVertical(45):moderateScaleVertical(20)}}>
-          <ButtonComponent buttonText={strings.LOGINS} textColor={colors.white} onPress={onLogin}/>
+      {/* ----------------------Login Button---------------------- */}
+      <KeyboardAvoidingView enabled={true} behavior={Platform.OS == 'android' ? 'height' : 'padding'}>
+        <View style={{ paddingBottom: Platform.OS === 'ios' ? moderateScaleVertical(45) : moderateScaleVertical(20) }}>
+          <ButtonComponent buttonText={strings.LOGINS} textColor={colors.white} onPress={onLogin} />
         </View>
       </KeyboardAvoidingView>
     </WrapperContainer>
