@@ -17,21 +17,20 @@ import { useSelector } from 'react-redux'
 
 function Login1({ navigation }) {
   const userData = useSelector(state=> state)
-  console.log("user data+++",userData)
+  // console.log("user data+++",userData)
   
-  const [phoneno, setPhone] = useState('');
-  const [Password, setPassword] = useState('');
-
+  const [phone, setPhone] = useState('');
+  const [password, setPassword] = useState('');
 
 // ------------------Login api---------------------//
   const onLogin = async () => {
 
     let apiData = {
-      phone: phoneno,
-      phone_code: "91",
+      phone: phone,
+      phone_code: "+91",
       device_token: 'KDKFJDKFDFKDFDF',
       device_type: Platform.OS == 'ios' ? 'IOS' : 'ANDROID',
-      password: Password,
+      password: password,
       loginType: 'admin',
     }
     console.log("sending login data",apiData)

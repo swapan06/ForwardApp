@@ -39,6 +39,7 @@ const TextInputComponent = ({
           value={value}
           onChangeText={onchangetext}
           keyboardAppearance={'dark'}
+       
       
         />
       </View>

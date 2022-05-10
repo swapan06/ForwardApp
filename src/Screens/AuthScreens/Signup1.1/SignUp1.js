@@ -15,7 +15,7 @@ import SmoothPinCodeInput from 'react-native-smooth-pincode-input'
 import actions from '../../../redux/actions'
 
 const SignUp1 = ({ navigation,route }) => {
-  const phoneNumber = route?.params?.phone;
+  const phone = route?.params?.phone;
   const phoneCode = route?.params?.code;
 
   const apiData = route?.params?.data;

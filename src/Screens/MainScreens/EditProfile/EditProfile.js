@@ -64,8 +64,6 @@ function EditProfile({ navigation }) {
 
     }
 
-
-
     const onSelectImage = () => {
         ImagePicker.openPicker({
             width: 300,

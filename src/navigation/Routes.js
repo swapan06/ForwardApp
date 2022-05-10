@@ -15,10 +15,10 @@ export default function Route() {
     return (
         <NavigationContainer>
             <Stack.Navigator>
-                {intro
+                {/* {intro
                         ? IntroSlider(Stack)
-                        : !!(userStatus || userStatus?.access_token)? MainStack(Stack) : AuthStack(Stack)}
-                        {/* {userStatus? MainStack(Stack) : AuthStack(Stack)} */}
+                        : !!(userStatus || userStatus?.access_token)? MainStack(Stack) : AuthStack(Stack)} */}
+                        {userStatus? MainStack(Stack) : AuthStack(Stack)}
             </Stack.Navigator>
         </NavigationContainer>
     );

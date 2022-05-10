@@ -86,6 +86,15 @@ export default {
     TITLE:'Hendrerit vulputate sem',
     DESCRIPTION:'Aenean et convallis nulla. Donec in efficitur nisi, et vestibulum quam aenean.',
     CURRENT_PASSWORD:'Current Password',
+    SELECT_PHOTO:'Select Photo',
+    GALLERY:'Gallery',
+    RECENTS:'Recents',
+    ADD_INFO:'Add info',
+    POST:'POST',
+    WRITE_DESCRIPTION:'Write description here...',
+    ADD_LOCATION:'Add location',
+
+
 
 
 

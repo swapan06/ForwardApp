@@ -5,6 +5,7 @@ import Bottomnavigation from './Bottomnavigation';
 import ChangePassword from '../Screens/MainScreens/ChangePassword/ChangePassword';
 import EditProfile from '../Screens/MainScreens/EditProfile/EditProfile';
 import PostDetail from '../Screens/MainScreens/PostDetail/PostDetail';
+import AddInfo from '../Screens/MainScreens/AddInfo/AddInfo';
 
 
  
@@ -31,6 +32,11 @@ function HomeStack() {
                 name={navigationStrings.POST_DETAILS}
                 component={PostDetail}
                 options={{ headerShown: false }}
+            />
+            <Stack.Screen 
+             name={navigationStrings.ADD_INFO}
+             component={AddInfo}
+             options={{headerShown: false}}
             />
             </Stack.Navigator>
         </>

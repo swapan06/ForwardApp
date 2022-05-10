@@ -6,6 +6,10 @@ export const commonstyles = StyleSheet.create({
     color: colors.white,
     fontSize: textScale(24),
   },
+  leftTextStyle: {
+    color: colors.white,
+    fontSize: textScale(16)
+},
   welcomeText:{
     fontSize:textScale(24),
     textAlign:'left',

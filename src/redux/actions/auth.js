@@ -8,7 +8,6 @@ import { setUserData } from "../../utils/utils";
 
 const { dispatch } = store
 export const saveUserData = (data) => {
-    console.log(data)
     dispatch({
         type: types.LOGIN,
         payload: data,
@@ -27,6 +26,7 @@ export const login = (data) => {
     return new Promise((resolve, reject) => {
         apiPost(LOGIN, data).then((res) => {
             setUserData(res.data).then(suc => {
+                 console.log(res?.data ,"response ");
                 saveUserData(res.data);
                 resolve(res);
             }).catch((error) => {
@@ -35,7 +35,6 @@ export const login = (data) => {
         });
     });
 };
-
 
 export const editProfile = (data) => {
     console.log(data, 'the given data for profile update');

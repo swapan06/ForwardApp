@@ -17,7 +17,7 @@ export const saveState = async (detailsList) => {
 
 export const getData = async () => {
   try {
-    const newData = await AsyncStorage.getItem('data_key');
+    const newData = await AsyncStorage.getItem('userData');
     console.log("new Data is uyrhygmh", newData);
     return newData != null ? JSON.parse(newData) : null
   } catch (error) {
@@ -29,7 +29,7 @@ export const getData = async () => {
 export const saveLogin = async (data) => {
   try {
     const initState = JSON.stringify(data);
-    await AsyncStorage.setItem('login_key', initState);
+    await AsyncStorage.setItem('userData', initState);
     console.log('Data is stored in store')
     return initState
   } catch (error) {
@@ -61,11 +61,11 @@ export const removeLogin = async () => {
 // ----------------
 export async function getHeaders() {
   let userData = await AsyncStorage.getItem('userData');
-  // console.log("user data header",userData)
+  console.log("user data header",userData)
   if (userData) {
     userData = JSON.parse(userData);
     return {
-      authorization: `Bearer ${userData.access_token}`,
+      authorization: `Bearer ${userData?.access_token}`,
     };
   }
   return {};
@@ -121,7 +121,7 @@ export const storeLogin = async (data) => {
   console.log(data, '------------store>my>data')
   try {
       let jsonValue = JSON.stringify(data)
-      await AsyncStorage.setItem('LoginData', jsonValue)
+      await AsyncStorage.setItem('userData', jsonValue)
       console.log(jsonValue, 'store my data')
       return { jsonValue }
   } catch (e) {
@@ -187,7 +187,7 @@ export async function apiReq(
     axios[method](endPoint, data, {headers})
       .then(result => {
         const {data} = result;
-
+        console.log("api hit data",data)
         if (data.status === false) {
           return rej(data);
         }
@@ -195,8 +195,8 @@ export async function apiReq(
         return res(data);
       })
       .catch(error => {
+        console.log("error raised",error)
         if (error && error.response && error.response.status === 401) {
-          sessionHandler(error.response.data.message);
           return rej(error);
         }
         if (error && error.response && error.response.data) {

@@ -24,5 +24,8 @@ export const images ={
     edit:require('../assets/images/ic_edit.png'),
     cross:require('../assets/images/ic_crss.png'),
     slider:require('../assets/images/slide.png'),
+    downimg: require('../assets/images/ic_down.png'),
+    camera: require('../assets/images/camera.png'),
+    addicon: require('../assets/images/ic_plus.png'),
 
 }
