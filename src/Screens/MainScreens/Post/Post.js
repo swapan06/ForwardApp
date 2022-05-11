@@ -8,6 +8,10 @@ import styles from './style'
 import { images } from '../../../constants/images'
 import ImageCropPicker from 'react-native-image-crop-picker'
 import navigationStrings from '../../../navigation/navigationStrings'
+import DropDownPicker from 'react-native-dropdown-picker'
+import { width } from '../../../style/responsiveSize'
+import colors from '../../../style/colors'
+
 
 
 
@@ -15,13 +19,15 @@ import navigationStrings from '../../../navigation/navigationStrings'
 
 const Post = ({ navigation }) => {
   const [state, setState] = useState({
-    photos: []
+    photos: [],
+    selectPhotos: ''
   });
-  const { photos } = state;
+  const { photos, selectPhotos } = state;
+  const updateState = (data) => setState((state) => ({ ...state, ...data }))
 
   useEffect(() => {
     hasGalleryPermissions()
-  });
+  }, [])
   // -----android permissions------
 
   const hasAndroidPermissions = async () => {
@@ -44,13 +50,16 @@ const Post = ({ navigation }) => {
       assetType: 'Photos',
     })
       .then(r => {
-        setState({ photos: r.edges });
+        updateState({ photos: r.edges });
+        updateState({ selectPhotos: r.edges[0].node.image.uri });
         // console.log("rtwddsfv", r)
       })
       .catch(err => {
         console.log('erre', err);
       });
   }
+
+
 
   // ----------Imagecroppicker-------//
   const launchCamera = () => {
@@ -59,7 +68,8 @@ const Post = ({ navigation }) => {
       height: 400,
       cropping: true,
     }).then(image => {
-      // console.log(image);
+      console.log(image);
+
     });
   }
 
@@ -91,14 +101,37 @@ const Post = ({ navigation }) => {
       ]
     );
 
+  const imageSwap = element => {
+    console.log("index", element.item.node.image)
+    updateState({ selectPhotos: element.item.node.image.uri });
+  };
+
   return (
     <WrapperContainer>
       <Header leftText={true}
         leftTextTitle={strings.SELECT_PHOTO}
-        leftTextStyle={styles.headTextStyle} />
-
+        leftTextStyle={styles.headTextStyle}
+        rightImage={true}
+        rightImageIcon={images?.post}
+        rightIconPress={() => navigation.navigate(navigationStrings.ADD_INFO, { image: selectPhotos })}
+      />
+      <View>
+        <Image
+          style={styles.firstImage}
+          source={{ uri: selectPhotos }}
+        ></Image>
+      </View>
       <View style={styles.detailView}>
         <Text style={styles.galleryText}>{strings.GALLERY}</Text>
+        {/* <DropDownPicker
+          items={[
+            { label: 'recents', value: 'item1' },
+            { label: 'Item 2', value: 'item2' },
+          ]}
+          defaultIndex={0}
+          containerStyle={{ height: 50, width:width/3, color:colors.solidgrey }}
+          onChangeItem={items => console.log(items.label, items.value)}
+        /> */}
         <View style={{ flexDirection: 'row', alignItems: 'center' }}>
           <Text style={styles.recentText}>{strings.RECENTS}</Text>
           <Image style={styles.downIcon} source={images?.downarrow} />
@@ -108,28 +141,17 @@ const Post = ({ navigation }) => {
         scrollEnabled={true}
         renderItem={(element) => {
           let index = element.index
-          if (index == 0) {
-            return (
-              <View>
-                <Image
-                  style={styles.firstImage}
-                  key={index}
-                  source={{ uri: element.item.node.image.uri }}
-                />
-              </View>
-            )
-          }
-          else {
-            return (
-              <TouchableOpacity onPress={() => navigation.navigate(navigationStrings.ADD_INFO, { image: element.item.node.image })}>
-                <Image
-                  key={index}
-                  source={{ uri: element.item.node.image.uri }}
-                  style={styles.galleryPhoto} />
-              </TouchableOpacity>
-            )
-          }
+          return (
+            <TouchableOpacity onPress={() => imageSwap(element)}>
+              <Image
+                style={styles.galleryPhoto}
+                key={index}
+                source={{ uri: element.item.node.image.uri }}
+              />
+            </TouchableOpacity>
+          )
         }}
+
         numColumns={3}
       />
 

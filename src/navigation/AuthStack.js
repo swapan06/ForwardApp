@@ -13,7 +13,7 @@ import SetPassword from '../Screens/AuthScreens/SetPassword/SetPassword';
 export default function (Stack) {
     return (
         <>
-            <Stack.Screen name={navigationStrings.GETSTARTED} component={Tutorial} options={{ headerShown: false }} />
+            {/* <Stack.Screen name={navigationStrings.GETSTARTED} component={Tutorial} options={{ headerShown: false }} /> */}
             <Stack.Screen name={navigationStrings.LOGIN} component={Login} options={{ headerShown: false }} />
             <Stack.Screen name={navigationStrings.LOGIN1} component={Login1}  options={{ headerShown: false }} />
             <Stack.Screen name={navigationStrings.SIGNUP} component={SignUp}  options={{ headerShown: false }} />

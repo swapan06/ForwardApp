@@ -1,6 +1,6 @@
 import { StyleSheet, Dimensions } from 'react-native'
-import { color } from 'react-native-elements/dist/helpers';
 import colors from '../../../style/colors';
+import fontFamily from '../../../style/fontFamily';
 const { width, height } = Dimensions.get('window');
 import responsiveSize, { moderateScale, textScale } from '../../../style/responsiveSize'
 
@@ -10,7 +10,8 @@ const styles = StyleSheet.create({
     headTextStyle: {
         fontSize: textScale(16),
         color: colors.white,
-        fontWeight: '600'
+        fontWeight: 'bold'
+        // fontFamily:fontFamily.bold
     },
     detailView: {
         flexDirection: 'row',
@@ -18,7 +19,7 @@ const styles = StyleSheet.create({
         backgroundColor: colors.greyF,
         borderTopLeftRadius: 8,
         borderTopRightRadius: 8,
-        marginTop:moderateScale(24),
+        marginTop:moderateScale(2),
         height: moderateScale(50),
         alignItems: 'center'
       },
@@ -40,6 +41,7 @@ const styles = StyleSheet.create({
       galleryPhoto: {
         width: width / 3,
         height: width / 3,
+        borderWidth:0
       },
       firstImage: {
         width: width,

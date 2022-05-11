@@ -27,5 +27,6 @@ export const images ={
     downimg: require('../assets/images/ic_down.png'),
     camera: require('../assets/images/camera.png'),
     addicon: require('../assets/images/ic_plus.png'),
+    rightarrow: require('../assets/images/rightarrow.png'),
 
 }

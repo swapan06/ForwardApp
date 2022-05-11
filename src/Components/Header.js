@@ -32,6 +32,7 @@ function Header({
   rightTextStyle = '',
 
   onPress = '',
+  rightIconPress,
   ...props
 }) {
   return (
@@ -66,7 +67,9 @@ function Header({
       </View>
       <View style={{ flex: 0.33, flexDirection: 'row', justifyContent:'flex-end'}}>
         {rightImage && (
+          <TouchableOpacity  {...props} onPress={rightIconPress}>
           <Image source={rightImageIcon} style={rightImageStyle} />
+          </TouchableOpacity>
         )}
         {rightText && (
           <TouchableOpacity {...props}>

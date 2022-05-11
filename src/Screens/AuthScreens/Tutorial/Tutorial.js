@@ -6,6 +6,7 @@ import navigationStrings from '../../../navigation/navigationStrings'
 import WrapperContainer from '../../../Components/WrapperContainer'
 import strings from '../../../constants/lang'
 import { images } from '../../../constants/images'
+import actions from '../../../redux/actions'
 
 
 
@@ -30,12 +31,12 @@ const slides = [{
 ];
 
 const Tutorial = ({ navigation }) => {
-    // const data = () => {
-    //     actions.Intro(false);
-    // };
+    const data = () => {
+        actions.Intro(false);
+    };
 
 
-    const renderSlide = ({ item }) => {
+    function renderSlide({ item }) {
         return (
             <View style={styles.slide}>
                 <Image style={styles.imageStyle} source={item.image} />
@@ -43,7 +44,7 @@ const Tutorial = ({ navigation }) => {
                 <Text style={styles.description}>{item.description}</Text>
             </View>
         )
-    };
+    }
     const renderNextButton = () => {
         return (
             <View>
@@ -54,7 +55,7 @@ const Tutorial = ({ navigation }) => {
     const renderDoneButton = () => {
         return (
             <View>
-                <TouchableOpacity onPress={() => { navigation.navigate(navigationStrings.LOGIN) }}>
+                <TouchableOpacity onPress={data}>
                     <Text style={styles.startbtn}>GET STARTED</Text>
                 </TouchableOpacity>
 
@@ -62,7 +63,6 @@ const Tutorial = ({ navigation }) => {
         );
     };
     return (
-
         <ScrollView>
             <WrapperContainer>
                 <View style={styles.tutorialContainer}>
