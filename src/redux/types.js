@@ -7,6 +7,7 @@ export default {
     INTRO:"INTRO",
     CHANGE_PASSWORD:"CHANGE_PASSWORD",
     EDIT_PROFILE:"EDIT_PROFILE",
+    IMAGE_UPLOAD:'IMAGE_UPLOAD',
 };
   
    

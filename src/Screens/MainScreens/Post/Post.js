@@ -8,22 +8,36 @@ import styles from './style'
 import { images } from '../../../constants/images'
 import ImageCropPicker from 'react-native-image-crop-picker'
 import navigationStrings from '../../../navigation/navigationStrings'
-import DropDownPicker from 'react-native-dropdown-picker'
-import { width } from '../../../style/responsiveSize'
-import colors from '../../../style/colors'
-
-
-
-
+import actions from '../../../redux/actions'
 
 
 const Post = ({ navigation }) => {
   const [state, setState] = useState({
     photos: [],
-    selectPhotos: ''
+    selectPhotos: '',
+   
   });
   const { photos, selectPhotos } = state;
   const updateState = (data) => setState((state) => ({ ...state, ...data }))
+
+  // console.log(selectPhotos)
+  const imageAdd = async () => {
+    let apiData = {
+      image: selectPhotos,
+  }
+  console.log("single pic API data : ", apiData)
+  actions.singleImgUpload(apiData)
+      .then(res => {
+          console.log("single image api res_+++++", res)
+          alert("single image hit successfully....!!!")
+          navigation.navigate(navigationStrings.ADD_INFO,{ image: selectPhotos })
+      })
+      .catch(err => {
+          console.log(err, 'err');
+          alert(err?.message);
+      });
+}
+
 
   useEffect(() => {
     hasGalleryPermissions()
@@ -113,7 +127,7 @@ const Post = ({ navigation }) => {
         leftTextStyle={styles.headTextStyle}
         rightImage={true}
         rightImageIcon={images?.post}
-        rightIconPress={() => navigation.navigate(navigationStrings.ADD_INFO, { image: selectPhotos })}
+        rightIconPress={imageAdd}
       />
       <View>
         <Image

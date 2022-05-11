@@ -32,7 +32,8 @@ const styles = StyleSheet.create({
       recentText:{
           fontSize:textScale(14),
           color:colors.white,
-          paddingHorizontal:moderateScale(8)
+          paddingHorizontal:moderateScale(8),
+          marginLeft:moderateScale(-32)
 
       },
       downIcon:{

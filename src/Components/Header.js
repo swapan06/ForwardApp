@@ -1,8 +1,6 @@
 import React from 'react';
 import { Text, View, TouchableOpacity, Image, StyleSheet } from 'react-native';
-import { images } from '../constants/images';
-import colors from '../style/colors';
-import { moderateScale, moderateScaleVertical, textScale, width } from '../style/responsiveSize';
+import { moderateScale, moderateScaleVertical,  width } from '../style/responsiveSize';
 
 
 function Header({
