@@ -21,27 +21,33 @@ const Post = ({ navigation }) => {
   const updateState = (data) => setState((state) => ({ ...state, ...data }))
 
   // console.log(selectPhotos)
+
+ 
   const imageAdd = async () => {
-    let apiData = {
-      image: selectPhotos,
-  }
-  console.log("single pic API data : ", apiData)
-  actions.singleImgUpload(apiData)
-      .then(res => {
-          console.log("single image api res_+++++", res)
-          alert("single image hit successfully....!!!")
-          navigation.navigate(navigationStrings.ADD_INFO,{ image: selectPhotos })
-      })
-      .catch(err => {
-          console.log(err, 'err');
-          alert(err?.message);
-      });
+    let apiData = new FormData()
+    apiData.append('image', {
+        uri: selectPhotos,
+        name: `${(Math.random() + 1).toString(36).substring(7)}.jpg`,
+        type: 'image/jpeg',
+
+    })
+    console.log("single pic API data : ", apiData)
+    let header = { "Content-Type": "multipart/form-data" }
+    actions.singleImgUpload(apiData, header)
+        .then(res => {
+            console.log("single image api res_+++++", res)
+         
+            // return;
+            navigation.navigate(navigationStrings.ADD_INFO, { image: res.data })
+        })
+        .catch(err => {
+            console.log(err, 'err');
+            alert(err?.message);
+        });
 }
 
 
-  useEffect(() => {
-    hasGalleryPermissions()
-  }, [])
+  
   // -----android permissions------
 
   const hasAndroidPermissions = async () => {
@@ -55,7 +61,7 @@ const Post = ({ navigation }) => {
     const status = await PermissionsAndroid.request(permission);
     return status === 'granted'
   };
-  const hasGalleryPermissions = async () => {
+  const imageData = async () => {
     if (Platform.OS === 'android' && !(await hasAndroidPermissions())) {
       return;
     }
@@ -73,6 +79,10 @@ const Post = ({ navigation }) => {
       });
   }
 
+  useEffect(() => {
+    imageData()
+  }, [])
+
 
 
   // ----------Imagecroppicker-------//
@@ -83,6 +93,7 @@ const Post = ({ navigation }) => {
       cropping: true,
     }).then(image => {
       console.log(image);
+      // navigation.navigate(navigationStrings.ADD_INFO, { selectPhotos: res?.path })
 
     });
   }

@@ -1,6 +1,7 @@
 import React from 'react';
 import {SafeAreaView, StatusBar, View} from 'react-native';
 import colors from '../style/colors';
+import Loader from './Loader';
 
 import {moderateScale, moderateScaleVertical,height} from '../styles/responsiveSize';
 
@@ -11,6 +12,8 @@ const WrapperContainer = ({
   bgColor = colors.solidgrey,
   statusBarColor = colors.solidgrey,
   barStyle = 'light-content',
+  isLoading='',
+  withModal='',
  
 }) => {
   return (
@@ -20,6 +23,7 @@ const WrapperContainer = ({
         backgroundColor: statusBarColor,
       }}>
       <StatusBar backgroundColor={statusBarColor} barStyle={barStyle} />
+      <Loader isLoading={isLoading} withModal={withModal} />
       <View style={{backgroundColor: bgColor, flex: 1, }}>{children}</View>
     </SafeAreaView>
   );

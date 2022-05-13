@@ -1,7 +1,7 @@
 import types from "../types"
 import store from "../store"
-import { apiPost } from "../../utils/utils";
-import { CHANGE_PASSWORD, EDIT_PROFILE, IMAGE_UPLOAD, SIGNUP } from "../../config/urls";
+import { apiGet, apiPost } from "../../utils/utils";
+import { CHANGE_PASSWORD, EDIT_PROFILE, IMAGE_UPLOAD, POST, POST_SEND, SIGNUP } from "../../config/urls";
 import { LOGIN } from "../../config/urls";
 import { setUserData } from "../../utils/utils";
 
@@ -53,8 +53,8 @@ export function changePassword(data) {
     return apiPost(CHANGE_PASSWORD, data);
 }
 // ------------ singleImgupload apipost----------
-export const singleImgUpload = (data) => {
-    return apiPost(IMAGE_UPLOAD, data);
+export const singleImgUpload = (data , header) => {
+    return apiPost(IMAGE_UPLOAD, data ,header);
 }
 // ------------intro action-----------------------
 export const Intro = (data) => {
@@ -64,6 +64,26 @@ export const Intro = (data) => {
         payload: data,
     })
 };
+// --------------post_send_api--------------------
+export const postSend = (data ,header) => {
+    return new Promise((resolve, reject) => {
+        apiPost(POST_SEND, data,header)
+            .then((res) => {
+               
+                resolve(res);
+            })
+            .catch(error => {
+                reject(error);
+            });
+    });
+};
+
+// -----------------get post api-----------------
+export const getPost =(query='')=>{
+    return apiGet(POST+query)
+
+  }
+
 // ------------Logout action-----------------------
 export const logout = () => {
     dispatch({

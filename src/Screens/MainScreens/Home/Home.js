@@ -1,76 +1,74 @@
-import React, { useState } from 'react'
-import { Text, SafeAreaView, StyleSheet, ScrollView, View } from 'react-native'
+import React, { useState, useEffect } from 'react'
+import { ScrollView, View, FlatList } from 'react-native'
 import Header from '../../../Components/Header'
 import WrapperContainer from '../../../Components/WrapperContainer'
 import { images } from '../../../constants/images'
-import Bottomnavigation from '../../../navigation/Bottomnavigation'
 import styles from './style'
 import HomeCard from '../../../Components/HomeCard'
 import navigationStrings from '../../../navigation/navigationStrings'
 import { useSelector } from 'react-redux'
 import strings from '../../../constants/lang'
+import actions from '../../../redux/actions'
 
-function Home({ navigation, route }) {
+function Home({ navigation }) {
     const data = useSelector(state => state.userStatus);
-    const User = data?.pass;
-    const user = data?.email;
+    const [post, setPost] = useState();
+    const [count, setCount] = useState(0);
+    const [isLoading, setIsLoading] = useState(false)
 
-    const [state, setState] = useState({
-        cardData: [
-            {
-                id: '1',
-                userProfile: images.userImage,
-                postImage: images.postimage,
-                userName: strings.USERNAME,
-                LOCATION: strings.LOCATIONS,
-            },
-            {
-                id: '2',
-                userProfile: images.editimage,
-                postImage: images.postimage,
-                userName: strings.USERNAME,
-                LOCATION: strings.LOCATIONS,
-            },
-            {
-                id: '3',
-                userProfile: images.userImage,
-                postImage: images.postimage,
-                userName: strings.USERNAME,
-                LOCATION: strings.LOCATIONS,
-            },
-            {
-                id: '4',
-                userProfile: images.editimage,
-                postImage: images.postimage,
-                userName: strings.USERNAME,
-                LOCATION: strings.LOCATIONS,
-            },
-        ],
-    });
+    useEffect(() => {
+        let apiData = `?skip=${count}`;
+        setIsLoading(true)
+        actions
+            .getPost(apiData)
+            .then(res => {
+                console.log(res, 'post upload'),
+                setIsLoading(false)
+                    setPost(res?.data);
+            })
+            .catch(err => {
+                console.log(err, 'error');
+            });
+    }, [count]);
 
-    const { cardData } = state
+
+
+    const renderItem = (element, index) => {
+        console.log("render ITEM", element)
+        return (
+            <HomeCard
+                userProfile={element.item.user.profile}
+                userName={element.item.user.first_name}
+                lastName={element.item.user.last_name}
+                location={element.item.location_name}
+                postImage={element.item.images.file[0]}
+                caption={element.item.caption}
+                postTime={element.item.time_ago}
+                commentCount={element.item.comment_count}
+                likesCount={element.item.like_count}
+                onPress={() => navigation.navigate(navigationStrings.POST_DETAILS)}
+            />
+        )
+
+    }
 
     return (
-        <WrapperContainer>
+        <WrapperContainer isLoading={isLoading} withModal={isLoading}>
             <Header
                 leftImage={true}
                 leftImageIcon={images?.homeicon}
                 rightImage={true}
                 rightImageIcon={images?.location} style={styles.rightImage}
             />
-            <ScrollView>
-                {cardData.map((item, index) => {
-                    return (
-                        <View key={index}>
-                            <HomeCard userProfile={item.userProfile}
-                                userName={item.userName}
-                                postImage={item.postImage}
-                                location={item.LOCATION}
-                                onPress={() => { navigation.navigate(navigationStrings.POST_DETAILS), { postDetail: item } }} />
-                        </View>
-                    )
-                })}
-            </ScrollView>
+            <View>
+                <FlatList
+                    data={post}
+                    renderItem={renderItem}
+                    onEndReached={() => {
+                        console.log('count++++++++++++++', count)
+                        setCount(count + 1)
+                    }} />
+            </View>
 
         </WrapperContainer>
 

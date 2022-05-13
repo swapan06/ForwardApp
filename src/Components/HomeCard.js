@@ -17,7 +17,12 @@ export default function HomeCard({
     postImage = '',
     name = false,
     userName = '',
+    lastName ='',
     location = '',
+    caption ='',
+    postTime='',
+    commentCount='',
+    likesCount='',
     onPress,
    
 }) {
@@ -39,15 +44,15 @@ export default function HomeCard({
             </View>
             <View>
                 <TouchableOpacity onPress={onPress}>
-                <Image source={postImage} style={styles.postStyle} />
+                <Image source={{uri:postImage}} style={styles.postStyle} />
                 </TouchableOpacity>
             </View>
             <View style={{
                 marginHorizontal: moderateScale(16),
                 marginVertical: moderateScale(10)
             }}>
-                <Text style={{ color: colors.white }}>{strings.LOREM_TEXT}</Text>
-                <Text style={{ color: colors.whiteOpacity50 ,marginTop:moderateScale(10)}}>{strings.TIME}</Text>
+                <Text style={{ color: colors.white }}>{caption}</Text>
+                <Text style={{ color: colors.whiteOpacity50 ,marginTop:moderateScale(10)}}>{postTime}</Text>
             </View>
             <View
                 style={{
@@ -58,10 +63,10 @@ export default function HomeCard({
                     paddingBottom: moderateScale(12)
                 }}>
                 <View style={{ alignItems: 'center' }}>
-                    <Text style={{ color: colors.white }}>{strings.COMMENTS}</Text>
+                    <Text style={{ color: colors.white }}>{strings.COMMENTS} {commentCount}</Text>
                 </View>
                 <View style={{ justifyContent: 'center' }}>
-                    <Text style={{ color: colors.white }}>{strings.LIKES} </Text>
+                    <Text style={{ color: colors.white }}>{strings.LIKES} {likesCount} </Text>
                 </View>
                 <View style={{ justifyContent: 'center', alignItems: 'center' }}>
                     <Image source={images?.direction} style={{ height: 10 }} />

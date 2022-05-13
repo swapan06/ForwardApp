@@ -8,6 +8,8 @@ export default {
     CHANGE_PASSWORD:"CHANGE_PASSWORD",
     EDIT_PROFILE:"EDIT_PROFILE",
     IMAGE_UPLOAD:'IMAGE_UPLOAD',
+    POST_SEND: 'POST_SEND',
+    POST: 'POST',
 };
   
    
