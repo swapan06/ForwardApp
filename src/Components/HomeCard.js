@@ -19,7 +19,7 @@ export default function HomeCard({
     userName = '',
     lastName ='',
     location = '',
-    caption ='',
+    description ='',
     postTime='',
     commentCount='',
     likesCount='',
@@ -31,7 +31,7 @@ export default function HomeCard({
             <View style={{ flexDirection: 'row', paddingTop: moderateScale(10), justifyContent: "space-between", alignItems: 'center', marginHorizontal: moderateScale(16) }}>
                 <View style={{ flexDirection: "row" }}>
                     <View >
-                        <Image source={userProfile} style={styles.userProfile} />
+                        <Image source={{uri:userProfile}} style={styles.userProfile} />
                     </View>
                     <View style={{ justifyContent: 'center', marginLeft: moderateScale(10) }}>
                         <Text style={{ color: colors.white, fontSize: textScale(16) }} >{userName}</Text>
@@ -51,7 +51,7 @@ export default function HomeCard({
                 marginHorizontal: moderateScale(16),
                 marginVertical: moderateScale(10)
             }}>
-                <Text style={{ color: colors.white }}>{caption}</Text>
+                <Text style={{ color: colors.white }}>{description}</Text>
                 <Text style={{ color: colors.whiteOpacity50 ,marginTop:moderateScale(10)}}>{postTime}</Text>
             </View>
             <View

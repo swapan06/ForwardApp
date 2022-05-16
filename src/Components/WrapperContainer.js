@@ -3,10 +3,6 @@ import {SafeAreaView, StatusBar, View} from 'react-native';
 import colors from '../style/colors';
 import Loader from './Loader';
 
-import {moderateScale, moderateScaleVertical,height} from '../styles/responsiveSize';
-
-import strings from '../constants/lang';
-
 const WrapperContainer = ({
   children,
   bgColor = colors.solidgrey,

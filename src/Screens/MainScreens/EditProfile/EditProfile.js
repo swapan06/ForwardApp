@@ -13,6 +13,7 @@ import ButtonComponent from '../../../Components/button'
 import { useSelector } from 'react-redux'
 import ImagePicker from 'react-native-image-crop-picker'
 import actions from '../../../redux/actions'
+import { singleImgUpload } from '../../../redux/actions/auth'
 
 
 
@@ -28,7 +29,9 @@ function EditProfile({ navigation }) {
         setCountryFlag(country.cca2);
         setCountryCode(country.callingCode[0]);
     };
+    const [isLoading, setIsLoading] = useState(true);
     const [state, setState] = useState({
+        post: userStatus?.profile,
         firstName: userStatus?.first_name,
         lastName: userStatus?.last_name,
         email: userStatus?.email,
@@ -38,19 +41,24 @@ function EditProfile({ navigation }) {
 
     });
 
-    const { firstName, lastName, email, phone, profileImage } = state;
-    const updateState = data => setState(state => ({ ...state, ...data }));
+    const { firstName, lastName, email, phone, profileImage, post } = state;
+    const updateState = (data) => setState(state => ({ ...state, ...data }));
 
     const onEditProfile = async () => {
-        let apiData = {
-            first_name: firstName,
-            last_name: lastName,
-            email: email,
-            phone: phone,
-        }
-        console.log("Editprofile api  data : ", apiData)
+        console.log("image", post)
+        let form = new FormData();
+        form.append('first_name', firstName);
+        form.append('last_name', lastName);
+        form.append('email', email);
+        form.append('image', {
+            uri: post,
+            name: `${(Math.random() + 1).toString(36).substring(7)}.jpg`,
+            type: null,
+        });
 
-        actions.editProfile(apiData)
+        console.log("udate profile API data : ", form)
+        let header = { "Content-Type": "multipart/form-data" }
+        actions.editProfile(form, header)
             .then(res => {
                 console.log("Edit api res_+++++", res)
                 alert("Updated Profile successfully....!!!")
@@ -60,8 +68,31 @@ function EditProfile({ navigation }) {
                 console.log(err, 'err');
                 alert(err?.message);
             });
+    }
 
 
+    const editImageUpload = (image) => {
+        setIsLoading(true);
+
+        let apiData = new FormData()
+        apiData.append('image', {
+            uri: image,
+            name: `${(Math.random() + 1).toString(36).substring(7)}.jpg`,
+            type: 'image/jpeg',
+        })
+        console.log("single pic API data : ", apiData)
+        let header = { "Content-Type": "multipart/form-data" }
+        actions.singleImgUpload(apiData, header)
+            .then(res => {
+                console.log("edit image api res+++++", res)
+                alert("edit image successfully....!!!")
+                updateState({ post: res.data })
+                setIsLoading(false);
+            })
+            .catch(err => {
+                console.log(err, 'err');
+                alert(err?.message);
+            });
     }
 
     const onSelectImage = () => {
@@ -70,11 +101,8 @@ function EditProfile({ navigation }) {
             height: 400,
             cropping: true
         }).then(image => {
-            console.log(image)
-            updateState({
-                profileImage: image?.sourceURL || image?.path,
-                imageType: image?.mime
-            })
+            console.log(image, " edit image**");
+            editImageUpload(image.path)
         });
     }
 
@@ -88,20 +116,10 @@ function EditProfile({ navigation }) {
                 leftTextStyle={styles.leftTextStyle}
                 onPress={() => navigation.goBack()} />
             <ScrollView>
-                <View style={{ justifyContent: 'center', alignItems: 'center', marginVertical: moderateScaleVertical(20) }}>
-                    <Image source={(profileImage) ? { uri: profileImage } : images.editimage} style={styles.imageprofile} />
+                <View style={styles.editContainer}>
+                    <Image source={(post) ? { uri: post } : images.editimage} style={styles.imageprofile} />
                     <TouchableOpacity onPress={onSelectImage}>
-                        <Image
-                            source={images.edit}
-                            style={{
-                                height: moderateScale(width / 20),
-                                width: moderateScale(width / 20),
-                                alignSelf: 'flex-end',
-                                marginTop: moderateScaleVertical(-30),
-                                marginLeft: moderateScale(75),
-
-                            }}
-                        />
+                        <Image source={images.edit} style={styles.editButton} />
                     </TouchableOpacity>
                 </View>
 
