@@ -9,7 +9,7 @@ import navigationStrings from '../../../navigation/navigationStrings'
 import { useSelector } from 'react-redux'
 import actions from '../../../redux/actions'
 
-function Home({ navigation }) {
+function Home({ navigation,route }) {
     const data = useSelector(state => state.userStatus);
     const [post, setPost] = useState();
     const [count, setCount] = useState(0);
@@ -33,7 +33,7 @@ function Home({ navigation }) {
 
 
     const renderItem = (element, index) => {
-        console.log("render ITEM", element)
+        // console.log("render ITEM", element)
         return (
             <HomeCard
                 userProfile={element.item.user.profile}
@@ -45,7 +45,7 @@ function Home({ navigation }) {
                 postTime={element.item.time_ago}
                 commentCount={element.item.comment_count}
                 likesCount={element.item.like_count}
-                onPress={() => navigation.navigate(navigationStrings.POST_DETAILS)}
+                onPress={() => navigation.navigate(navigationStrings.POST_DETAILS, { postDetail: element })}
             />
         )
 

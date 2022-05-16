@@ -107,7 +107,9 @@ const AddInfo = ({ navigation, route }) => {
         console.log("ddjhdsdhhds", post)
         post.map((item, index) => {
             console.log('item', item);
+            selectedImages.forEach((item, i) => {
             apiData.append('images[]',item)
+            })
         });
         apiData.append('description', description)
         apiData.append('latitude', '3.222')

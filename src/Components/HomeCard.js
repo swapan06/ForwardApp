@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View, Image , TouchableOpacity} from 'react-native';
+import { StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native';
 import React from 'react';
 import {
     height,
@@ -17,34 +17,34 @@ export default function HomeCard({
     postImage = '',
     name = false,
     userName = '',
-    lastName ='',
+    lastName = '',
     location = '',
-    description ='',
-    postTime='',
-    commentCount='',
-    likesCount='',
+    description = '',
+    postTime = '',
+    commentCount = '',
+    likesCount = '',
     onPress,
-   
+
 }) {
     return (
         <View style={styles.viewContainer}>
             <View style={{ flexDirection: 'row', paddingTop: moderateScale(10), justifyContent: "space-between", alignItems: 'center', marginHorizontal: moderateScale(16) }}>
                 <View style={{ flexDirection: "row" }}>
                     <View >
-                        <Image source={{uri:userProfile}} style={styles.userProfile} />
+                        <Image source={{ uri: userProfile }} style={styles.userProfile} />
                     </View>
                     <View style={{ justifyContent: 'center', marginLeft: moderateScale(10) }}>
-                        <Text style={{ color: colors.white, fontSize: textScale(16) }} >{userName}</Text>
+                        <Text style={{ color: colors.white, fontSize: textScale(16) }} >{userName} {lastName}</Text>
                         <Text style={{ color: '#AEAEAE' }} >{location}  </Text>
                     </View>
                 </View>
                 <View style={{ justifyContent: 'center', height: height / 20 }}>
-                    <Image source={images?.dots}/>
+                    <Image source={images?.dots} />
                 </View>
             </View>
             <View>
                 <TouchableOpacity onPress={onPress}>
-                <Image source={{uri:postImage}} style={styles.postStyle} />
+                    <Image source={{ uri: postImage }} style={styles.postStyle} />
                 </TouchableOpacity>
             </View>
             <View style={{
@@ -52,7 +52,7 @@ export default function HomeCard({
                 marginVertical: moderateScale(10)
             }}>
                 <Text style={{ color: colors.white }}>{description}</Text>
-                <Text style={{ color: colors.whiteOpacity50 ,marginTop:moderateScale(10)}}>{postTime}</Text>
+                <Text style={{ color: colors.whiteOpacity50, marginTop: moderateScale(10) }}>{postTime}</Text>
             </View>
             <View
                 style={{
