@@ -43,9 +43,7 @@ const notificationItems = ({ item }) => {
           <Text style={styles.detailsText}> added a new post.</Text>
         </View>
         <Text style={styles.timeText}>{strings.TIME}</Text>
-        <Divider ></Divider>
       </View>
-
     </View>
 
   )

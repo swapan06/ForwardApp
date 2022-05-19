@@ -27,7 +27,7 @@ function Bottomnavigation() {
       tabBarShowLabel:false
   }} >
       <Tab.Screen 
-      name={navigationStrings.HOME}
+      name={navigationStrings.HOMEICON}
       component={Home}
       options={{
           tabBarIcon:({focused})=>(

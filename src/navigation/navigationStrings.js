@@ -16,6 +16,8 @@ export default {
     EDIT_PROFILE:"Edit Profile",
     POST_DETAILS:"Post Details",
     ADD_INFO:"Add Info",
+    HOMEICON:"Homeicon",
+    COMMENTS: "Comments",
     
 
 }

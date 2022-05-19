@@ -17,7 +17,6 @@ import navigationStrings from '../../../navigation/navigationStrings'
 
 
 const AddInfo = ({ navigation, route }) => {
-    console.log(navigation,"navigation>navigation");
     const image = route?.params?.image;
     console.log("Selected image is : ", image);
     const [allValues, setAllValues] = useState({
@@ -26,6 +25,7 @@ const AddInfo = ({ navigation, route }) => {
         post: [image],
         imageType: null,
     });
+    const [isLoading, setIsLoading] = useState(false)
     const { description, location, post, imageType } = allValues
     const changeHandler = (val) => {
         setAllValues(allValues => ({ ...allValues, ...val }));
@@ -103,13 +103,13 @@ const AddInfo = ({ navigation, route }) => {
     }
 
     const onPost = () => {
+        setIsLoading(true);
         let apiData = new FormData();
         console.log("ddjhdsdhhds", post)
         post.map((item, index) => {
             console.log('item', item);
-            selectedImages.forEach((item, i) => {
             apiData.append('images[]',item)
-            })
+
         });
         apiData.append('description', description)
         apiData.append('latitude', '3.222')
@@ -129,7 +129,7 @@ const AddInfo = ({ navigation, route }) => {
                 console.log(err, 'err');
                 alert(err?.message);
             });
-        // navigation.navigate(navigationStrings.HOME)
+      
     }
     return (
         <WrapperContainer>

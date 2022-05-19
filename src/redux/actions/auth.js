@@ -1,7 +1,7 @@
 import types from "../types"
 import store from "../store"
 import { apiGet, apiPost } from "../../utils/utils";
-import { CHANGE_PASSWORD, EDIT_PROFILE, IMAGE_UPLOAD, POST, POST_SEND, SIGNUP } from "../../config/urls";
+import { CHANGE_PASSWORD, COMMENT_POST, EDIT_PROFILE, IMAGE_UPLOAD, LIKE_POST, POST, POST_SEND, SIGNUP } from "../../config/urls";
 import { LOGIN } from "../../config/urls";
 import { setUserData } from "../../utils/utils";
 
@@ -53,8 +53,8 @@ export function changePassword(data) {
     return apiPost(CHANGE_PASSWORD, data);
 }
 // ------------ singleImgupload apipost----------
-export const singleImgUpload = (data , header) => {
-    return apiPost(IMAGE_UPLOAD, data ,header);
+export const singleImgUpload = (data, header) => {
+    return apiPost(IMAGE_UPLOAD, data, header);
 }
 // ------------intro action-----------------------
 export const Intro = (data) => {
@@ -65,11 +65,11 @@ export const Intro = (data) => {
     })
 };
 // --------------post_send_api--------------------
-export const postSend = (data ,header) => {
+export const postSend = (data, header) => {
     return new Promise((resolve, reject) => {
-        apiPost(POST_SEND, data,header)
+        apiPost(POST_SEND, data, header)
             .then((res) => {
-               
+
                 resolve(res);
             })
             .catch(error => {
@@ -79,10 +79,21 @@ export const postSend = (data ,header) => {
 };
 
 // -----------------get post api-----------------
-export const getPost =(query='')=>{
-    return apiGet(POST+query)
+export const getPost = (query = '') => {
+    return apiGet(POST + query)
 
-  }
+}
+
+//   -----------------Like post api---------------
+
+export const getLike = (query = "", header = {}) => {
+    console.log(query)
+    return apiPost(LIKE_POST + query)
+}
+// --------------------Comment post api--------------
+export const postComment =(query ="" , header={}) => {
+    return apiPost(COMMENT_POST + query)
+}
 
 // ------------Logout action-----------------------
 export const logout = () => {

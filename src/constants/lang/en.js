@@ -93,6 +93,9 @@ export default {
     POST:'POST',
     WRITE_DESCRIPTION:'Write description here...',
     ADD_LOCATION:'Add location',
+    COMMENTS: "Comments",
+    COMMENT_HERE:"Add a comment........",
+    POST:"Post",
 
 
 

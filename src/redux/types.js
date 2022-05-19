@@ -10,6 +10,8 @@ export default {
     IMAGE_UPLOAD:'IMAGE_UPLOAD',
     POST_SEND: 'POST_SEND',
     POST: 'POST',
+    LIKE_POST: 'LIKE_POST',
+    COMMENT_POST: 'COMMENT_POST',
 };
   
    
