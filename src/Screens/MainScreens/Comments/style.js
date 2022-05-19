@@ -1,7 +1,7 @@
 import { StyleSheet, Dimensions } from 'react-native'
 import colors from '../../../style/colors';
 const { width, height } = Dimensions.get('window');
-import responsiveSize, { moderateScale, moderateScaleVertical, textScale } from '../../../style/responsiveSize'
+import  { moderateScale, moderateScaleVertical, textScale } from '../../../style/responsiveSize'
 
 const styles = StyleSheet.create({
     screen: {
@@ -9,20 +9,20 @@ const styles = StyleSheet.create({
         justifyContent: 'flex-end'
     },
     commentContainer: {
-        width: width - 46,
+        width: width - 6,
         flexDirection: 'row',
         alignSelf: 'center',
         marginTop: moderateScale(10)
     },
     profilePhoto: {
         marginRight: moderateScale(16),
-        // flex:0.12
     },
     profilePic: {
         height: 40,
         width: 40,
         borderRadius: width / 2,
         resizeMode: 'cover',
+        marginHorizontal:moderateScale(15)
     },
     nameContainer: {
         flex: 0.9,
@@ -31,30 +31,45 @@ const styles = StyleSheet.create({
     name: {
         fontSize: textScale(16),
         color: colors.white,
-
     },
-    location: {
+    description: {
         fontSize: textScale(13),
         color: colors.white,
-        marginVertical: moderateScaleVertical(8)
+        marginVertical: moderateScaleVertical(2)
+    },
+    uploadTime:{
+        color:colors.white,
+        fontSize: textScale(13),
+        marginVertical:moderateScaleVertical(6),
     },
     divider: {
-        marginTop: moderateScale(15)
+        marginVertical:moderateScaleVertical(10),
     },
     uploadTimeTxt: {
         fontSize: textScale(13),
-        color: colors.white,
-        marginVertical: moderateScaleVertical(6)
+        color: colors.disabledlight,
+        // marginVertical:moderateScaleVertical(5),
+        marginHorizontal:moderateScale(15)
+       
     },
     captionArea: {
-
         paddingVertical: moderateScaleVertical(12),
         paddingHorizontal: width / 20,
     },
     commentView: {
         flexDirection: 'row',
         justifyContent: 'space-around',
-        paddingBottom: Platform.OS === 'ios' ? moderateScaleVertical(25) : moderateScaleVertical(20)
-    }
+        paddingBottom: Platform.OS === 'ios' ? moderateScaleVertical(12) : moderateScaleVertical(20)
+    },
+    timeview: {
+        marginTop: moderateScale(4),
+        marginHorizontal: moderateScale(55),
+    },
+    commentText:{
+       color:colors.whiteSmokeColor,
+       marginVertical:moderateScaleVertical(5),
+       fontSize:textScale(13)
+       
+    },
 })
 export default styles

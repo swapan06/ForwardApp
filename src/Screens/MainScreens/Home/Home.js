@@ -20,6 +20,7 @@ function Home({ navigation }) {
 
     console.log("State'''''", post)
 
+    // ------------------like post api -----------
     const onLike = (element) => {
         let id = element.item.id
         let likeStatus = Number(element.item.like_status) ? 0 : 1
@@ -46,9 +47,10 @@ function Home({ navigation }) {
                 console.log(error)
             })
     }
-    useEffect(() => {
 
-        if (isLoading || setRefresh) {
+    // ------------post api ---------------
+    useEffect(() => {
+        if (isLoading || refresh) {
             let apiData = `?skip=${count}`;
             console.log("apidata", apiData)
             actions
@@ -56,25 +58,25 @@ function Home({ navigation }) {
                 .then(res => {
                     console.log(res, 'post upload'),
                         setIsLoading(false)
-                    setPost([...post, ...res?.data]);
+                        setRefresh(false)
+                        if (refresh) {
+                            setPost(res?.data)
+                        } else {
+                            setPost([...post, ...res?.data])
+                        }
 
                 })
                 .catch(err => {
                     console.log(err, 'error');
                 })
         }
-    }, [isLoading, setRefresh])
-
-
-
-
+    }, [isLoading,refresh])
 
     const onRefresh = () => {
         setCount(0)
         setRefresh(true)
 
     }
-
     const onPostDetail = (element, image) => {
         console.log("render ITEM", element)
         navigation.navigate(navigationStrings.POST_DETAILS, {
@@ -82,16 +84,15 @@ function Home({ navigation }) {
             image: image
         });
     };
-
-
+    // ------------------Home Card---------------
     const renderItem = (element, index) => {
         return (
             <HomeCard
                 data={element}
                 postDetail={(image) => onPostDetail(element, image)}
                 likePost={() => { onLike(element) }}
-                comment={() => navigation.navigate(navigationStrings.COMMENTS, {element})}
-                
+                comment={() => navigation.navigate(navigationStrings.COMMENTS, { data:element })}
+
             />
         )
 
@@ -120,8 +121,8 @@ function Home({ navigation }) {
                     }}
                     refreshControl={
                         <RefreshControl
-                            refreshing={onRefresh}
-                            onRefresh={refresh}
+                            refreshing={refresh}
+                            onRefresh={onRefresh}
                             tintColor="#F43738"
                         />
                     }

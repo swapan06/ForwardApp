@@ -1,7 +1,7 @@
 import types from "../types"
 import store from "../store"
 import { apiGet, apiPost } from "../../utils/utils";
-import { CHANGE_PASSWORD, COMMENT_POST, EDIT_PROFILE, IMAGE_UPLOAD, LIKE_POST, POST, POST_SEND, SIGNUP } from "../../config/urls";
+import { CHANGE_PASSWORD, COMMENT_GET, COMMENT_POST, EDIT_PROFILE, IMAGE_UPLOAD, LIKE_POST, POST, POST_SEND, SIGNUP } from "../../config/urls";
 import { LOGIN } from "../../config/urls";
 import { setUserData } from "../../utils/utils";
 
@@ -94,7 +94,10 @@ export const getLike = (query = "", header = {}) => {
 export const postComment =(query ="" , header={}) => {
     return apiPost(COMMENT_POST + query)
 }
-
+// -------------------Comment get api--------------
+export const  getComment =(query ="", header={}) =>{
+    return apiGet(COMMENT_GET + query)
+}
 // ------------Logout action-----------------------
 export const logout = () => {
     dispatch({

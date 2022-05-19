@@ -12,6 +12,7 @@ export default {
     POST: 'POST',
     LIKE_POST: 'LIKE_POST',
     COMMENT_POST: 'COMMENT_POST',
+    COMMENT_GET: 'COMMENT_GET',
 };
   
    
