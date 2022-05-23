@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { View, Image, KeyboardAvoidingView, Platform, ScrollView, TouchableOpacity, Alert , Text} from 'react-native'
+import { View, Image, KeyboardAvoidingView, Platform, ScrollView, TouchableOpacity, Alert, Text } from 'react-native'
 import WrapperContainer from '../../../Components/WrapperContainer'
 import Header from '../../../Components/Header'
 import { images } from '../../../constants/images'
@@ -108,7 +108,7 @@ const AddInfo = ({ navigation, route }) => {
         console.log("ddjhdsdhhds", post)
         post.map((item, index) => {
             console.log('item', item);
-            apiData.append('images[]',item)
+            apiData.append('images[]', item)
 
         });
         apiData.append('description', description)
@@ -129,7 +129,7 @@ const AddInfo = ({ navigation, route }) => {
                 console.log(err, 'err');
                 alert(err?.message);
             });
-      
+
     }
     return (
         <WrapperContainer>
@@ -185,9 +185,9 @@ const AddInfo = ({ navigation, route }) => {
                 </View>
             </ScrollView>
             <KeyboardAvoidingView enabled={true} behavior={Platform.OS == 'android' ? 'height' : 'padding'}>
-                <View style={{ paddingBottom: Platform.OS === 'ios' ? moderateScaleVertical(35) : moderateScaleVertical(20) }} >
+                <View style={commonstyles.buttonView} >
                     <ButtonComponent buttonText={strings.POST} textColor={colors.white} onPress={onPost} />
-                 </View>
+                </View>
             </KeyboardAvoidingView>
 
         </WrapperContainer>

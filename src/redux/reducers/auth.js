@@ -7,12 +7,11 @@ const userStatus = (state = initialstate, action) => {
     switch (action.type) {
         case types.LOGIN: {
             const data = action.payload;
-            
             saveLogin(data)
             console.log("LoginData", data)
             return { userData: data };
         }
-        
+      
         case types.LOGOUT: {
             removeItem('userData').then((res) => {
               console.log('res', res)

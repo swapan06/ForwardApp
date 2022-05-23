@@ -10,8 +10,6 @@ import Comments from '../Screens/MainScreens/Comments/Comments';
 
 
 
-
-
 function HomeStack() {
     const Stack = createStackNavigator();
     return (

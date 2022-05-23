@@ -4,8 +4,7 @@ import WrapperContainer from '../../../Components/WrapperContainer'
 import strings from '../../../constants/lang'
 import TextInputComponent from '../../../Components/TextInput'
 import colors from '../../../style/colors'
-import { height, moderateScale,moderateScaleVertical, textScale } from '../../../style/responsiveSize'
-// import styles from '../Profile/style'
+import { moderateScale } from '../../../style/responsiveSize'
 import styles from '../Search/style'
 
 const searchData = [
@@ -44,8 +43,6 @@ function Search() {
             placeholder={strings.ENTER_LOCATION}
             placeholderTextColor={colors.disabledlight}
             value={null}
-            // rightText={true}
-            // righttext={strings.ENTER_LOCATION}
           />
         </View>
         <View style={styles.mainContainer}>

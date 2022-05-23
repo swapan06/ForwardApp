@@ -1,7 +1,7 @@
 import { StyleSheet, Dimensions } from 'react-native'
 import colors from '../../../style/colors';
 const { width, height } = Dimensions.get('window');
-import responsiveSize, { moderateScale, moderateScaleVertical, textScale } from '../../../style/responsiveSize'
+import { moderateScale, moderateScaleVertical, textScale } from '../../../style/responsiveSize'
 
 
 
@@ -23,7 +23,6 @@ const styles = StyleSheet.create({
     },
     profilePhoto: {
         marginRight: moderateScale(16),
-        // flex:0.12
     },
     profilePic: {
         height: 40,
@@ -43,7 +42,6 @@ const styles = StyleSheet.create({
     location: {
         fontSize: textScale(13),
         color: colors.white,
-        // paddingTop:moderateScale(1)
     },
     optionsBox: {
         flex: 0.1,
@@ -57,19 +55,15 @@ const styles = StyleSheet.create({
         paddingHorizontal: width / 20,
     },
     captionTxt: {
-        // fontFamily: fontFamily.barlowRegular,
         fontSize: textScale(15),
         lineHeight: moderateScale(20),
         color: colors.white,
         marginBottom: moderateScale(10)
     },
     uploadTimeTxt: {
-    //     fontFamily: fontFamily.barlowRegular,
         fontSize: textScale(13),
         color: colors.white,
         marginBottom: moderateScale(12)
     },
-  
-   
 })
 export default styles

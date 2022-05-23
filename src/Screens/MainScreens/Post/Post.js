@@ -82,9 +82,6 @@ const Post = ({ navigation }) => {
   useEffect(() => {
     imageData()
   }, [])
-
-
-
   // ----------Imagecroppicker-------//
   const launchCamera = () => {
     ImageCropPicker.openCamera({
@@ -93,8 +90,6 @@ const Post = ({ navigation }) => {
       cropping: true,
     }).then(image => {
       console.log(image);
-      // navigation.navigate(navigationStrings.ADD_INFO, { selectPhotos: res?.path })
-
     });
   }
 
@@ -148,15 +143,6 @@ const Post = ({ navigation }) => {
       </View>
       <View style={styles.detailView}>
         <Text style={styles.galleryText}>{strings.GALLERY}</Text>
-        {/* <DropDownPicker
-          items={[
-            { label: 'recents', value: 'item1' },
-            { label: 'Item 2', value: 'item2' },
-          ]}
-          defaultIndex={0}
-          containerStyle={{ height: 50, width:width/3, color:colors.solidgrey }}
-          onChangeItem={items => console.log(items.label, items.value)}
-        /> */}
         <View style={{ flexDirection: 'row', alignItems: 'center' }}>
           <Text style={styles.recentText}>{strings.RECENTS}</Text>
           <Image style={styles.downIcon} source={images?.downarrow} />

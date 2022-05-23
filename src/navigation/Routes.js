@@ -18,7 +18,6 @@ export default function Route() {
                 {intro
                         ? IntroSlider(Stack)
                         : !!(userStatus || userStatus?.access_token)? MainStack(Stack) : AuthStack(Stack)}
-                        {/* {userStatus? MainStack(Stack) : AuthStack(Stack)} */}
             </Stack.Navigator>
         </NavigationContainer>
     );

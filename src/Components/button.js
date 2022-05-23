@@ -2,7 +2,7 @@ import { View, Text, TouchableOpacity, StyleSheet, Image } from 'react-native'
 import React from 'react'
 import { moderateScale, textScale } from '../style/responsiveSize';
 import fontFamily from '../style/fontFamily';
-import colors from '../style/colors';
+
 
 const ButtonComponent = ({
     buttonText = '',
@@ -51,11 +51,9 @@ const buttonStyles = StyleSheet.create({
         backgroundColor: 'red',
         borderRadius: moderateScale(4),
         margin: moderateScale(10),
-        // justifyContent: 'center',
         width: moderateScale(250),
         height: moderateScale(40),
-        // alignSelf: 'center',
-        // fontFamily: fontFamily.MULISh_BOLD
+     
     },
     image: {
         height: moderateScale(20),

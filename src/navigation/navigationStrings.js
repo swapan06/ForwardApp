@@ -6,7 +6,7 @@ export default {
     SIGNUP1:"Signup1",
     SETPASSWORD:"SetPassword",
     HOME: "Home",
-    SEARCH:"sEARCH",
+    SEARCH:"Search",
     POST:"Post",
     NOTIFICATION:"Notification",
     PROFILE:"Profile",

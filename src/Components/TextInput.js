@@ -1,7 +1,7 @@
 import React from 'react';
 import {Image, StyleSheet, TextInput, View,Text,TouchableOpacity,} from 'react-native';
 import colors from '../style/colors';
-// import fontfamily from '../styles/fontFamily';
+
 import {moderateScale, moderateScaleVertical} from '../style/responsiveSize';
 
 
@@ -39,8 +39,6 @@ const TextInputComponent = ({
           value={value}
           onChangeText={onchangetext}
           keyboardAppearance={'dark'}
-       
-      
         />
       </View>
       {rightText && (
@@ -48,7 +46,6 @@ const TextInputComponent = ({
           <TouchableOpacity activeOpacity={1}onPress={showpass}>
           <Text style={{color:colors.disabledlight}}>{righttext}</Text>
           </TouchableOpacity>
-            
         </View>
       )}
 
@@ -70,18 +67,15 @@ const styles = StyleSheet.create({
   viewcss: {
     flexDirection: 'row',
     alignItems: 'center',
-    backgroundColor: '#4C4C4C',
+    backgroundColor: colors.greyF,
     borderRadius: moderateScale(10),
     marginLeft: moderateScale(10),
     height: moderateScale(50),
-    // marginHorizontal:moderateScale(20),
-    
   },
   inputtext: {
     paddingVertical: moderateScaleVertical(10),
     color: colors.white,
     flex: 1,
-    
   },
 });
 

@@ -18,6 +18,8 @@ import { showError } from '../../../utils/helperFunctions'
 
 
 function SignUp({ navigation }) {
+
+  
   const [signUpData, setSignupData] = useState({
     firstName: '',
     lastName: '',
@@ -165,7 +167,7 @@ function SignUp({ navigation }) {
       </ScrollView>
 
       <KeyboardAvoidingView enabled={true} behavior={Platform.OS == 'android' ? 'height' : 'padding'}>
-        <View style={{ paddingBottom: Platform.OS === 'ios' ? moderateScaleVertical(45) : moderateScaleVertical(20) }}>
+        <View style={commonstyles.buttonView}>
           <ButtonComponent buttonText={strings.NEXT} textColor={colors.white} onPress={onSignup} />
         </View>
       </KeyboardAvoidingView>

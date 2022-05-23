@@ -58,19 +58,18 @@ function Home({ navigation }) {
                 .then(res => {
                     console.log(res, 'post upload'),
                         setIsLoading(false)
-                        setRefresh(false)
-                        if (refresh) {
-                            setPost(res?.data)
-                        } else {
-                            setPost([...post, ...res?.data])
-                        }
-
+                    setRefresh(false)
+                    if (refresh) {
+                        setPost(res?.data)
+                    } else {
+                        setPost([...post, ...res?.data])
+                    }
                 })
                 .catch(err => {
                     console.log(err, 'error');
                 })
         }
-    }, [isLoading,refresh])
+    }, [isLoading, refresh])
 
     const onRefresh = () => {
         setCount(0)
@@ -91,7 +90,7 @@ function Home({ navigation }) {
                 data={element}
                 postDetail={(image) => onPostDetail(element, image)}
                 likePost={() => { onLike(element) }}
-                comment={() => navigation.navigate(navigationStrings.COMMENTS, { data:element })}
+                comment={() => navigation.navigate(navigationStrings.COMMENTS, { data: element })}
 
             />
         )

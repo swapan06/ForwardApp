@@ -10,9 +10,8 @@ import {
 import { images } from '../constants/images';
 import strings from '../constants/lang';
 import colors from '../style/colors';
-import { isArray, isEmpty } from 'lodash';
+import { isArray } from 'lodash';
 import Carousel, { Pagination } from 'react-native-snap-carousel'
-import navigationStrings from '../navigation/navigationStrings';
 
 export default function HomeCard({
 
@@ -20,14 +19,15 @@ export default function HomeCard({
   likePost,
   comment = '',
   data = {},
-  navigation,
-
 
 }) {
   const [snapState, setSnapState] = useState(0);
   return (
     <View style={styles.viewContainer}>
-      <View style={{ flexDirection: 'row', paddingTop: moderateScale(10), justifyContent: "space-between", alignItems: 'center', marginHorizontal: moderateScale(16) }}>
+      <View style={{
+        flexDirection: 'row', paddingTop: moderateScale(10), justifyContent: "space-between", alignItems: 'center',
+        marginHorizontal: moderateScale(16)
+      }}>
         <View style={{ flexDirection: "row" }}>
           <View >
             <Image source={{ uri: data.item.user.profile }} style={styles.userProfile} />
@@ -98,10 +98,9 @@ export default function HomeCard({
       </View>
       <View style={{
         marginHorizontal: moderateScale(16),
-        marginVertical: moderateScale(10)
-      }}>
+        marginVertical: moderateScale(10)}}>
         <Text style={{ color: colors.white }}>{data.item.description}</Text>
-        <Text style={{ color: colors.whiteOpacity50, marginTop: moderateScale(10) }}> {data.item.time_ago}</Text>
+        <Text style={{ color: colors.whiteOpacity50, marginTop: moderateScale(10) }}>{data.item.time_ago}</Text>
       </View>
       <View
         style={{
@@ -111,8 +110,8 @@ export default function HomeCard({
           flexWrap: "wrap",
           paddingBottom: moderateScale(12)
         }}>
-        <TouchableOpacity style={{ alignItems: 'center' }}  onPress={comment}>
-          <Text style={{ color: colors.white }}> {strings.COMMENTS} {data.item.comment_count}</Text>
+        <TouchableOpacity style={{ alignItems: 'center' }} onPress={comment}>
+          <Text style={{ color: colors.white }}>{strings.COMMENTS} {data.item.comment_count}</Text>
         </TouchableOpacity>
         <TouchableOpacity style={{ justifyContent: 'center' }} onPress={likePost}>
           <Text style={{ color: colors.white }}>{strings.LIKES} {data.item.like_count} </Text>
@@ -133,8 +132,6 @@ const styles = StyleSheet.create({
     marginHorizontal: moderateScale(16),
     backgroundColor: '#4C4C4C',
     borderRadius: moderateScale(10),
-
-
   },
   userProfile: {
     height: moderateScale(width / 10),

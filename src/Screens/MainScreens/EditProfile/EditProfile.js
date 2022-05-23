@@ -14,6 +14,7 @@ import { useSelector } from 'react-redux'
 import ImagePicker from 'react-native-image-crop-picker'
 import actions from '../../../redux/actions'
 import { singleImgUpload } from '../../../redux/actions/auth'
+import { commonstyles } from '../../../style/commonStyles'
 
 
 
@@ -180,7 +181,7 @@ function EditProfile({ navigation }) {
                 </View>
             </ScrollView>
             <KeyboardAvoidingView enabled={true} behavior={Platform.OS == 'android' ? 'height' : 'padding'}>
-                <View style={{ paddingBottom: Platform.OS === 'ios' ? moderateScaleVertical(45) : moderateScaleVertical(20) }} >
+                <View style={commonstyles.buttonView} >
                     <ButtonComponent buttonText={strings.SAVE_CHANGES} textColor={colors.white} onPress={onEditProfile} />
                 </View>
             </KeyboardAvoidingView>

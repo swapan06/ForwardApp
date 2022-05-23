@@ -1,41 +1,38 @@
-import React,{useState} from 'react'
-import { Text, View, SafeAreaView, Image, KeyboardAvoidingView, Platform, ScrollView } from 'react-native'
+import React, { useState } from 'react'
+import { Text, View, KeyboardAvoidingView, Platform, ScrollView } from 'react-native'
 import WrapperContainer from '../../../Components/WrapperContainer'
 import { images } from '../../../constants/images'
 import strings from '../../../constants/lang'
-import styles from './style'
 import Header from '../../../Components/Header'
 import ButtonComponent from '../../../Components/button'
 import colors from '../../../style/colors'
-import { moderateScale, moderateScaleVertical, width, textScale } from '../../../style/responsiveSize'
+import { moderateScale,textScale } from '../../../style/responsiveSize'
 import navigationStrings from '../../../navigation/navigationStrings'
-import TextInputComponent from '../../../Components/TextInput'
 import { commonstyles } from '../../../style/commonStyles'
 import SmoothPinCodeInput from 'react-native-smooth-pincode-input'
 import actions from '../../../redux/actions'
+import styles from '../Signup1.1/style'
 
-const SignUp1 = ({ navigation,route }) => {
-  const phone = route?.params?.phone;
-  const phoneCode = route?.params?.code;
+const SignUp1 = ({ navigation, route }) => {
+  // const phone = route?.params?.data?.phone;
+  // const phoneCode = route?.params?.data?.code;
 
   const apiData = route?.params?.data;
-    console.log("NEW USER DATA IS:", apiData);
+  console.log("NEW USER DATA IS:", apiData);
 
-    const otp = apiData?.otp
-    console.log(otp, 'otpdata--');
+  const otp = apiData?.otp
+  console.log(otp, 'otpdata--');
 
-    const [code, setCode] = useState();
+  const [code, setCode] = useState();
+  const signupWithOtp = () => {
 
-    
-    const signupWithOtp = () =>{
-        
-        if (otp == code) {
-            actions.saveUserData(apiData)
-            alert("Login successfully")
-        } else {
-            alert("wrong OTP")
-        }
+    if (otp == code) {
+      actions.saveUserData(apiData)
+      alert("Login successfully")
+    } else {
+      alert("wrong OTP")
     }
+  }
 
   return (
     <WrapperContainer>
@@ -45,34 +42,35 @@ const SignUp1 = ({ navigation,route }) => {
         onPress={() => { navigation.navigate(navigationStrings.SIGNUP) }} />
       <ScrollView>
         <View>
-          <Text style={commonstyles.welcomeText}>{strings.CODE}</Text>
+          <Text style={commonstyles.welcomeText}>{strings.CODE} {apiData.phone_code} {apiData?.phone}</Text>
           <Text style={commonstyles.continueText}>{strings.EDIT_NUMBER}</Text>
+          <Text style={styles.otpView}>{strings.OTP}{apiData?.otp}</Text>
         </View>
 
 
-        <View style={{ flex: 1, flexDirection: 'row', marginHorizontal: moderateScale(20), marginVertical: moderateScale(16) }}>
+        <View style={styles.smoothinputView}>
           <SmoothPinCodeInput
             cellStyle={{
-              color: "white",
+              color: colors.white,
               backgroundColor: colors.greyF,
               borderRadius: moderateScale(8),
             }}
-             textStyle={{
+            textStyle={{
               fontSize: textScale(14),
               color: colors.white,
             }}
-               value={code}
+            value={code}
             onTextChange={(otp) => setCode(otp)}
-            onBackspace={() => console.log("No more back.")}  
-            />
-            
+            onBackspace={() => console.log("No more back.")}
+          />
+
         </View>
       </ScrollView>
       <View style={{ marginLeft: moderateScale(20) }}>
         <Text style={{ fontSize: moderateScale(15), color: colors.white }}>{strings.RESEND_CODE}</Text>
       </View>
       <KeyboardAvoidingView enabled={true} behavior={Platform.OS == 'android' ? 'height' : 'padding'}>
-        <View style={{ paddingBottom: Platform.OS === 'ios' ? moderateScaleVertical(45) : moderateScaleVertical(20) }}>
+        <View style={commonstyles.buttonView}>
           <ButtonComponent buttonText={strings.VERIFY} textColor={colors.white} onPress={signupWithOtp} />
         </View>
       </KeyboardAvoidingView>

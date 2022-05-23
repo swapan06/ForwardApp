@@ -40,7 +40,7 @@ const notificationItems = ({ item }) => {
       <View>
         <View style={styles.notificationText} >
           <Text style={styles.nameText}>{item.name}</Text>
-          <Text style={styles.detailsText}> added a new post.</Text>
+          <Text style={styles.detailsText}>{strings.NEW_POST}</Text>
         </View>
         <Text style={styles.timeText}>{strings.TIME}</Text>
       </View>

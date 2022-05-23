@@ -12,7 +12,6 @@ export const saveUserData = (data) => {
         type: types.LOGIN,
         payload: data,
     })
-
 };
 
 export function signUp(data) {
@@ -33,7 +32,6 @@ export const login = (data) => {
         });
     });
 };
-
 // ------------editProfile apipost----------
 export const editProfile = (data) => {
     console.log(data, 'the given data for profile update');
@@ -56,6 +54,35 @@ export function changePassword(data) {
 export const singleImgUpload = (data, header) => {
     return apiPost(IMAGE_UPLOAD, data, header);
 }
+// --------------post_send_api--------------------
+export const postSend = (data, header) => {
+    return new Promise((resolve, reject) => {
+        apiPost(POST_SEND, data, header)
+            .then((res) => {
+                resolve(res);
+            })
+            .catch(error => {
+                reject(error);
+            });
+    });
+};
+// -----------------get post api-----------------
+export const getPost = (query = '') => {
+    return apiGet(POST + query)
+}
+//   -----------------Like post api---------------
+export const getLike = (query = "", header = {}) => {
+    console.log(query)
+    return apiPost(LIKE_POST + query)
+}
+// --------------------Comment post api--------------
+export const postComment = (query = "", header = {}) => {
+    return apiPost(COMMENT_POST + query)
+}
+// -------------------Comment get api--------------
+export const getComment = (query = "", header = {}) => {
+    return apiGet(COMMENT_GET + query)
+}
 // ------------intro action-----------------------
 export const Intro = (data) => {
     console.log("data----------", data)
@@ -64,45 +91,10 @@ export const Intro = (data) => {
         payload: data,
     })
 };
-// --------------post_send_api--------------------
-export const postSend = (data, header) => {
-    return new Promise((resolve, reject) => {
-        apiPost(POST_SEND, data, header)
-            .then((res) => {
-
-                resolve(res);
-            })
-            .catch(error => {
-                reject(error);
-            });
-    });
-};
-
-// -----------------get post api-----------------
-export const getPost = (query = '') => {
-    return apiGet(POST + query)
-
-}
-
-//   -----------------Like post api---------------
-
-export const getLike = (query = "", header = {}) => {
-    console.log(query)
-    return apiPost(LIKE_POST + query)
-}
-// --------------------Comment post api--------------
-export const postComment =(query ="" , header={}) => {
-    return apiPost(COMMENT_POST + query)
-}
-// -------------------Comment get api--------------
-export const  getComment =(query ="", header={}) =>{
-    return apiGet(COMMENT_GET + query)
-}
 // ------------Logout action-----------------------
 export const logout = () => {
     dispatch({
         type: types.LOGOUT,
-
     })
 };
 

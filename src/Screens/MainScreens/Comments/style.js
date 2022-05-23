@@ -1,7 +1,7 @@
 import { StyleSheet, Dimensions } from 'react-native'
 import colors from '../../../style/colors';
 const { width, height } = Dimensions.get('window');
-import  { moderateScale, moderateScaleVertical, textScale } from '../../../style/responsiveSize'
+import { moderateScale, moderateScaleVertical, textScale } from '../../../style/responsiveSize'
 
 const styles = StyleSheet.create({
     screen: {
@@ -22,7 +22,7 @@ const styles = StyleSheet.create({
         width: 40,
         borderRadius: width / 2,
         resizeMode: 'cover',
-        marginHorizontal:moderateScale(15)
+        marginHorizontal: moderateScale(15)
     },
     nameContainer: {
         flex: 0.9,
@@ -37,20 +37,18 @@ const styles = StyleSheet.create({
         color: colors.white,
         marginVertical: moderateScaleVertical(2)
     },
-    uploadTime:{
-        color:colors.white,
+    uploadTime: {
+        color: colors.white,
         fontSize: textScale(13),
-        marginVertical:moderateScaleVertical(6),
+        marginVertical: moderateScaleVertical(6),
     },
     divider: {
-        marginVertical:moderateScaleVertical(10),
+        marginVertical: moderateScaleVertical(10),
     },
-    uploadTimeTxt: {
+    timeText: {
         fontSize: textScale(13),
         color: colors.disabledlight,
-        // marginVertical:moderateScaleVertical(5),
-        marginHorizontal:moderateScale(15)
-       
+        marginHorizontal: moderateScale(15)
     },
     captionArea: {
         paddingVertical: moderateScaleVertical(12),
@@ -65,11 +63,17 @@ const styles = StyleSheet.create({
         marginTop: moderateScale(4),
         marginHorizontal: moderateScale(55),
     },
-    commentText:{
-       color:colors.whiteSmokeColor,
-       marginVertical:moderateScaleVertical(5),
-       fontSize:textScale(13)
-       
+    commentText: {
+        color: colors.whiteSmokeColor,
+        marginVertical: moderateScaleVertical(5),
+        fontSize: textScale(13),
+    },
+    postButton: {
+        flex: 0.2,
+        backgroundColor: colors.redB,
+        justifyContent: 'center',
+        alignItems: 'center',
+        borderRadius: 8
     },
 })
 export default styles

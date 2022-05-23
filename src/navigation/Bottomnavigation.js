@@ -108,9 +108,6 @@ function Bottomnavigation() {
       />
 
    </Tab.Navigator>
-
- 
-   
   )
 }
 

@@ -13,6 +13,7 @@ import { moderateScale, moderateScaleVertical, textScale } from '../../../style/
 import CountryCode from '../../../Components/CountryCode'
 import actions from '../../../redux/actions'
 import { useSelector } from 'react-redux'
+import { commonstyles } from '../../../style/commonStyles'
 
 
 function Login1({ navigation }) {
@@ -102,7 +103,7 @@ function Login1({ navigation }) {
       </ScrollView>
       {/* ----------------------Login Button---------------------- */}
       <KeyboardAvoidingView enabled={true} behavior={Platform.OS == 'android' ? 'height' : 'padding'}>
-        <View style={{ paddingBottom: Platform.OS === 'ios' ? moderateScaleVertical(45) : moderateScaleVertical(20) }}>
+        <View style={commonstyles.buttonView}>
           <ButtonComponent buttonText={strings.LOGINS} textColor={colors.white} onPress={onLogin} />
         </View>
       </KeyboardAvoidingView>

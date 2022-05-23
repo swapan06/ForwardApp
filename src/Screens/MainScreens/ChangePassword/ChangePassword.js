@@ -11,6 +11,7 @@ import styles from './style'
 import colors from '../../../style/colors'
 import { useSelector } from 'react-redux'
 import actions from '../../../redux/actions'
+import { commonstyles } from '../../../style/commonStyles'
 
 
 
@@ -61,7 +62,7 @@ function ChangePassword({ navigation }) {
                             value={currentpassword}
                             rightText={true}
                             righttext={strings.SHOW}
-                            onchangetext={(currentpassword) => updateState({ currentpassword})}
+                            onchangetext={(currentpassword) => updateState({ currentpassword })}
                         />
                     </View>
                     <View >
@@ -79,7 +80,7 @@ function ChangePassword({ navigation }) {
             </ScrollView>
 
             <KeyboardAvoidingView enabled={true} behavior={Platform.OS == 'android' ? 'height' : 'padding'}>
-                <View style={{ paddingBottom: Platform.OS === 'ios' ? moderateScaleVertical(45) : moderateScaleVertical(20) }} >
+                <View style={commonstyles.buttonView} >
                     <ButtonComponent buttonText={strings.SAVE} textColor={colors.white} onPress={changePassword} />
                 </View>
             </KeyboardAvoidingView>

@@ -1,6 +1,6 @@
-import React, {useState} from 'react';
-import {StyleSheet, View, Image, Text} from 'react-native';
-import CountryPicker, {Flag} from 'react-native-country-picker-modal';
+import React, { useState } from 'react';
+import { StyleSheet, View, Image} from 'react-native';
+import CountryPicker, { Flag } from 'react-native-country-picker-modal';
 import { images } from '../constants/images';
 import colors from '../style/colors';
 import {
@@ -23,12 +23,9 @@ function CountryCode() {
           flexDirection: 'row',
           alignItems: 'center',
           justifyContent: 'center',
-          backgroundColor: '#4C4C4C',
+          backgroundColor: colors.greyF,
           borderRadius: moderateScaleVertical(10),
           height: moderateScaleVertical(50),
-        //   marginTop: moderateScaleVertical(2),
-          // flex: 0.6,
-          // width:moderateScale(width/4.4),
           marginLeft: moderateScale(10),
         }}>
         <CountryPicker
@@ -37,7 +34,7 @@ function CountryCode() {
           countryCode={countryFlag}
           withCallingCode={true}
           withCallingCodeButton={countryCode}
-          theme={{onBackgroundTextColor: colors?.white,backgroundColor:colors?.greyF}}
+          theme={{ onBackgroundTextColor: colors?.white, backgroundColor: colors?.greyF }}
         />
         <Image
           source={images.downarrow}
